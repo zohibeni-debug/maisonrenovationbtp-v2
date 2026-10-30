@@ -1,0 +1,1316 @@
+[
+ {
+  "name": "Compans",
+  "slug": "compans",
+  "group": "Goële et Plaine de France",
+  "dist_site": "3,5",
+  "dist": 3.5,
+  "bearing": 69,
+  "lat": 48.9944,
+  "lon": 2.6614,
+  "insee": "77123",
+  "cp": [
+   "77290"
+  ],
+  "dept": "77",
+  "dept_name": "Seine-et-Marne",
+  "pop": 754,
+  "epci": "CA Roissy Pays de France"
+ },
+ {
+  "name": "Villeparisis",
+  "slug": "villeparisis",
+  "group": "Goële et Plaine de France",
+  "dist_site": "4,1",
+  "dist": 4.6,
+  "bearing": 182,
+  "lat": 48.94208,
+  "lon": 2.61463,
+  "insee": "77514",
+  "cp": [
+   "77270"
+  ],
+  "dept": "77",
+  "dept_name": "Seine-et-Marne",
+  "pop": 26946,
+  "epci": "CA Roissy Pays de France"
+ },
+ {
+  "name": "Le Mesnil-Amelot",
+  "slug": "le-mesnil-amelot",
+  "group": "Goële et Plaine de France",
+  "dist_site": "4,4",
+  "dist": 4.1,
+  "bearing": 337,
+  "lat": 49.0172,
+  "lon": 2.5947,
+  "insee": "77291",
+  "cp": [
+   "77990"
+  ],
+  "dept": "77",
+  "dept_name": "Seine-et-Marne",
+  "pop": 992,
+  "epci": "CA Roissy Pays de France"
+ },
+ {
+  "name": "Claye-Souilly",
+  "slug": "claye-souilly",
+  "group": "Goële et Plaine de France",
+  "dist_site": "6,0",
+  "dist": 6.6,
+  "bearing": 130,
+  "lat": 48.94492,
+  "lon": 2.68566,
+  "insee": "77118",
+  "cp": [
+   "77410"
+  ],
+  "dept": "77",
+  "dept_name": "Seine-et-Marne",
+  "pop": 13353,
+  "epci": "CA Roissy Pays de France"
+ },
+ {
+  "name": "Le Pin",
+  "slug": "le-pin",
+  "group": "Goële et Plaine de France",
+  "dist_site": "7,2",
+  "dist": 7.6,
+  "bearing": 174,
+  "lat": 48.91523,
+  "lon": 2.62841,
+  "insee": "77363",
+  "cp": [
+   "77181"
+  ],
+  "dept": "77",
+  "dept_name": "Seine-et-Marne",
+  "pop": 1530,
+  "epci": "CC Plaines et Monts de France"
+ },
+ {
+  "name": "Villevaudé",
+  "slug": "villevaude",
+  "group": "Goële et Plaine de France",
+  "dist_site": "8,2",
+  "dist": 7.8,
+  "bearing": 160,
+  "lat": 48.91751,
+  "lon": 2.65228,
+  "insee": "77517",
+  "cp": [
+   "77410"
+  ],
+  "dept": "77",
+  "dept_name": "Seine-et-Marne",
+  "pop": 2132,
+  "epci": "CC Plaines et Monts de France"
+ },
+ {
+  "name": "Juilly",
+  "slug": "juilly",
+  "group": "Goële et Plaine de France",
+  "dist_site": "8,4",
+  "dist": 7.3,
+  "bearing": 62,
+  "lat": 49.01375,
+  "lon": 2.70563,
+  "insee": "77241",
+  "cp": [
+   "77230"
+  ],
+  "dept": "77",
+  "dept_name": "Seine-et-Marne",
+  "pop": 2036,
+  "epci": "CA Roissy Pays de France"
+ },
+ {
+  "name": "Saint-Mard",
+  "slug": "saint-mard",
+  "group": "Goële et Plaine de France",
+  "dist_site": "9,1",
+  "dist": 8.3,
+  "bearing": 44,
+  "lat": 49.03701,
+  "lon": 2.69645,
+  "insee": "77420",
+  "cp": [
+   "77230"
+  ],
+  "dept": "77",
+  "dept_name": "Seine-et-Marne",
+  "pop": 3832,
+  "epci": "CA Roissy Pays de France"
+ },
+ {
+  "name": "Annet-sur-Marne",
+  "slug": "annet-sur-marne",
+  "group": "Goële et Plaine de France",
+  "dist_site": "9,3",
+  "dist": 9.8,
+  "bearing": 130,
+  "lat": 48.92669,
+  "lon": 2.71959,
+  "insee": "77005",
+  "cp": [
+   "77410"
+  ],
+  "dept": "77",
+  "dept_name": "Seine-et-Marne",
+  "pop": 3408,
+  "epci": "CC Plaines et Monts de France"
+ },
+ {
+  "name": "Dammartin-en-Goële",
+  "slug": "dammartin-en-goele",
+  "group": "Goële et Plaine de France",
+  "dist_site": "9,8",
+  "dist": 9.1,
+  "bearing": 29,
+  "lat": 49.05423,
+  "lon": 2.67777,
+  "insee": "77153",
+  "cp": [
+   "77230"
+  ],
+  "dept": "77",
+  "dept_name": "Seine-et-Marne",
+  "pop": 11907,
+  "epci": "CA Roissy Pays de France"
+ },
+ {
+  "name": "Moussy-le-Neuf",
+  "slug": "moussy-le-neuf",
+  "group": "Goële et Plaine de France",
+  "dist_site": "10",
+  "dist": 9.1,
+  "bearing": 353,
+  "lat": 49.06427,
+  "lon": 2.60252,
+  "insee": "77322",
+  "cp": [
+   "77230"
+  ],
+  "dept": "77",
+  "dept_name": "Seine-et-Marne",
+  "pop": 3253,
+  "epci": "CA Roissy Pays de France"
+ },
+ {
+  "name": "Othis",
+  "slug": "othis",
+  "group": "Goële et Plaine de France",
+  "dist_site": "12",
+  "dist": 10.9,
+  "bearing": 23,
+  "lat": 49.07387,
+  "lon": 2.67502,
+  "insee": "77349",
+  "cp": [
+   "77280"
+  ],
+  "dept": "77",
+  "dept_name": "Seine-et-Marne",
+  "pop": 6717,
+  "epci": "CA Roissy Pays de France"
+ },
+ {
+  "name": "Tremblay-en-France",
+  "slug": "tremblay-en-france",
+  "group": "Est de la Seine-Saint-Denis",
+  "dist_site": "4,2",
+  "dist": 5.1,
+  "bearing": 223,
+  "lat": 48.94956,
+  "lon": 2.5684,
+  "insee": "93073",
+  "cp": [
+   "93290"
+  ],
+  "dept": "93",
+  "dept_name": "Seine-Saint-Denis",
+  "pop": 38348,
+  "epci": "Métropole du Grand Paris"
+ },
+ {
+  "name": "Vaujours",
+  "slug": "vaujours",
+  "group": "Est de la Seine-Saint-Denis",
+  "dist_site": "5,5",
+  "dist": 6.8,
+  "bearing": 209,
+  "lat": 48.93022,
+  "lon": 2.5711,
+  "insee": "93074",
+  "cp": [
+   "93410"
+  ],
+  "dept": "93",
+  "dept_name": "Seine-Saint-Denis",
+  "pop": 8007,
+  "epci": "Métropole du Grand Paris"
+ },
+ {
+  "name": "Villepinte",
+  "slug": "villepinte",
+  "group": "Est de la Seine-Saint-Denis",
+  "dist_site": "5,9",
+  "dist": 6.6,
+  "bearing": 249,
+  "lat": 48.96203,
+  "lon": 2.53253,
+  "insee": "93078",
+  "cp": [
+   "93420"
+  ],
+  "dept": "93",
+  "dept_name": "Seine-Saint-Denis",
+  "pop": 41470,
+  "epci": "Métropole du Grand Paris"
+ },
+ {
+  "name": "Coubron",
+  "slug": "coubron",
+  "group": "Est de la Seine-Saint-Denis",
+  "dist_site": "7,2",
+  "dist": 7.8,
+  "bearing": 198,
+  "lat": 48.91667,
+  "lon": 2.58333,
+  "insee": "93015",
+  "cp": [
+   "93470"
+  ],
+  "dept": "93",
+  "dept_name": "Seine-Saint-Denis",
+  "pop": 5175,
+  "epci": "Métropole du Grand Paris"
+ },
+ {
+  "name": "Sevran",
+  "slug": "sevran",
+  "group": "Est de la Seine-Saint-Denis",
+  "dist_site": "7,4",
+  "dist": 7.8,
+  "bearing": 237,
+  "lat": 48.94472,
+  "lon": 2.52746,
+  "insee": "93071",
+  "cp": [
+   "93270"
+  ],
+  "dept": "93",
+  "dept_name": "Seine-Saint-Denis",
+  "pop": 52535,
+  "epci": "Métropole du Grand Paris"
+ },
+ {
+  "name": "Livry-Gargan",
+  "slug": "livry-gargan",
+  "group": "Est de la Seine-Saint-Denis",
+  "dist_site": "8,6",
+  "dist": 8.9,
+  "bearing": 217,
+  "lat": 48.9193,
+  "lon": 2.54305,
+  "insee": "93046",
+  "cp": [
+   "93190"
+  ],
+  "dept": "93",
+  "dept_name": "Seine-Saint-Denis",
+  "pop": 47228,
+  "epci": "Métropole du Grand Paris"
+ },
+ {
+  "name": "Clichy-sous-Bois",
+  "slug": "clichy-sous-bois",
+  "group": "Est de la Seine-Saint-Denis",
+  "dist_site": "9,2",
+  "dist": 9.4,
+  "bearing": 210,
+  "lat": 48.9102,
+  "lon": 2.55323,
+  "insee": "93014",
+  "cp": [
+   "93390"
+  ],
+  "dept": "93",
+  "dept_name": "Seine-Saint-Denis",
+  "pop": 29354,
+  "epci": "Métropole du Grand Paris"
+ },
+ {
+  "name": "Aulnay-sous-Bois",
+  "slug": "aulnay-sous-bois",
+  "group": "Est de la Seine-Saint-Denis",
+  "dist_site": "9,4",
+  "dist": 10.3,
+  "bearing": 241,
+  "lat": 48.93814,
+  "lon": 2.49402,
+  "insee": "93005",
+  "cp": [
+   "93600"
+  ],
+  "dept": "93",
+  "dept_name": "Seine-Saint-Denis",
+  "pop": 87599,
+  "epci": "Métropole du Grand Paris"
+ },
+ {
+  "name": "Montfermeil",
+  "slug": "montfermeil",
+  "group": "Est de la Seine-Saint-Denis",
+  "dist_site": "9,5",
+  "dist": 9.9,
+  "bearing": 196,
+  "lat": 48.8982,
+  "lon": 2.57913,
+  "insee": "93047",
+  "cp": [
+   "93370"
+  ],
+  "dept": "93",
+  "dept_name": "Seine-Saint-Denis",
+  "pop": 28703,
+  "epci": "Métropole du Grand Paris"
+ },
+ {
+  "name": "Les Pavillons-sous-Bois",
+  "slug": "les-pavillons-sous-bois",
+  "group": "Est de la Seine-Saint-Denis",
+  "dist_site": "11",
+  "dist": 11.7,
+  "bearing": 223,
+  "lat": 48.90683,
+  "lon": 2.50648,
+  "insee": "93057",
+  "cp": [
+   "93320"
+  ],
+  "dept": "93",
+  "dept_name": "Seine-Saint-Denis",
+  "pop": 25804,
+  "epci": "Métropole du Grand Paris"
+ },
+ {
+  "name": "Le Raincy",
+  "slug": "le-raincy",
+  "group": "Est de la Seine-Saint-Denis",
+  "dist_site": "11",
+  "dist": 11.6,
+  "bearing": 216,
+  "lat": 48.89916,
+  "lon": 2.52298,
+  "insee": "93062",
+  "cp": [
+   "93340"
+  ],
+  "dept": "93",
+  "dept_name": "Seine-Saint-Denis",
+  "pop": 14735,
+  "epci": "Métropole du Grand Paris"
+ },
+ {
+  "name": "Gagny",
+  "slug": "gagny",
+  "group": "Est de la Seine-Saint-Denis",
+  "dist_site": "12",
+  "dist": 12.7,
+  "bearing": 209,
+  "lat": 48.88333,
+  "lon": 2.53333,
+  "insee": "93032",
+  "cp": [
+   "93220"
+  ],
+  "dept": "93",
+  "dept_name": "Seine-Saint-Denis",
+  "pop": 42313,
+  "epci": "Métropole du Grand Paris"
+ },
+ {
+  "name": "Le Blanc-Mesnil",
+  "slug": "le-blanc-mesnil",
+  "group": "Est de la Seine-Saint-Denis",
+  "dist_site": "12",
+  "dist": 12.4,
+  "bearing": 246,
+  "lat": 48.93872,
+  "lon": 2.46138,
+  "insee": "93007",
+  "cp": [
+   "93150"
+  ],
+  "dept": "93",
+  "dept_name": "Seine-Saint-Denis",
+  "pop": 62376,
+  "epci": "Métropole du Grand Paris"
+ },
+ {
+  "name": "Bondy",
+  "slug": "bondy",
+  "group": "Est de la Seine-Saint-Denis",
+  "dist_site": "13",
+  "dist": 13.0,
+  "bearing": 226,
+  "lat": 48.9018,
+  "lon": 2.48931,
+  "insee": "93010",
+  "cp": [
+   "93140"
+  ],
+  "dept": "93",
+  "dept_name": "Seine-Saint-Denis",
+  "pop": 50595,
+  "epci": "Métropole du Grand Paris"
+ },
+ {
+  "name": "Villemomble",
+  "slug": "villemomble",
+  "group": "Est de la Seine-Saint-Denis",
+  "dist_site": "13",
+  "dist": 14.0,
+  "bearing": 218,
+  "lat": 48.88333,
+  "lon": 2.5,
+  "insee": "93077",
+  "cp": [
+   "93250"
+  ],
+  "dept": "93",
+  "dept_name": "Seine-Saint-Denis",
+  "pop": 29795,
+  "epci": "Métropole du Grand Paris"
+ },
+ {
+  "name": "Drancy",
+  "slug": "drancy",
+  "group": "Est de la Seine-Saint-Denis",
+  "dist_site": "14",
+  "dist": 14.1,
+  "bearing": 243,
+  "lat": 48.92578,
+  "lon": 2.44533,
+  "insee": "93029",
+  "cp": [
+   "93700"
+  ],
+  "dept": "93",
+  "dept_name": "Seine-Saint-Denis",
+  "pop": 72390,
+  "epci": "Métropole du Grand Paris"
+ },
+ {
+  "name": "Neuilly-sur-Marne",
+  "slug": "neuilly-sur-marne",
+  "group": "Est de la Seine-Saint-Denis",
+  "dist_site": "14",
+  "dist": 15.2,
+  "bearing": 199,
+  "lat": 48.85373,
+  "lon": 2.54903,
+  "insee": "93050",
+  "cp": [
+   "93330"
+  ],
+  "dept": "93",
+  "dept_name": "Seine-Saint-Denis",
+  "pop": 39800,
+  "epci": "Métropole du Grand Paris"
+ },
+ {
+  "name": "Rosny-sous-Bois",
+  "slug": "rosny-sous-bois",
+  "group": "Est de la Seine-Saint-Denis",
+  "dist_site": "15",
+  "dist": 15.2,
+  "bearing": 214,
+  "lat": 48.87017,
+  "lon": 2.4991,
+  "insee": "93064",
+  "cp": [
+   "93110"
+  ],
+  "dept": "93",
+  "dept_name": "Seine-Saint-Denis",
+  "pop": 47180,
+  "epci": "Métropole du Grand Paris"
+ },
+ {
+  "name": "Noisy-le-Grand",
+  "slug": "noisy-le-grand",
+  "group": "Est de la Seine-Saint-Denis",
+  "dist_site": "16",
+  "dist": 15.4,
+  "bearing": 195,
+  "lat": 48.84979,
+  "lon": 2.56266,
+  "insee": "93051",
+  "cp": [
+   "93160"
+  ],
+  "dept": "93",
+  "dept_name": "Seine-Saint-Denis",
+  "pop": 72978,
+  "epci": "Métropole du Grand Paris"
+ },
+ {
+  "name": "Courtry",
+  "slug": "courtry",
+  "group": "Vallée de la Marne et Marne-la-Vallée",
+  "dist_site": "6,9",
+  "dist": 7.2,
+  "bearing": 187,
+  "lat": 48.91906,
+  "lon": 2.60431,
+  "insee": "77139",
+  "cp": [
+   "77181"
+  ],
+  "dept": "77",
+  "dept_name": "Seine-et-Marne",
+  "pop": 7330,
+  "epci": "CA Paris - Vallée de la Marne"
+ },
+ {
+  "name": "Brou-sur-Chantereine",
+  "slug": "brou-sur-chantereine",
+  "group": "Vallée de la Marne et Marne-la-Vallée",
+  "dist_site": "9,9",
+  "dist": 11.2,
+  "bearing": 174,
+  "lat": 48.88333,
+  "lon": 2.63333,
+  "insee": "77055",
+  "cp": [
+   "77177"
+  ],
+  "dept": "77",
+  "dept_name": "Seine-et-Marne",
+  "pop": 5196,
+  "epci": "CA Paris - Vallée de la Marne"
+ },
+ {
+  "name": "Chelles",
+  "slug": "chelles",
+  "group": "Vallée de la Marne et Marne-la-Vallée",
+  "dist_site": "10",
+  "dist": 11.5,
+  "bearing": 189,
+  "lat": 48.88109,
+  "lon": 2.59295,
+  "insee": "77108",
+  "cp": [
+   "77500"
+  ],
+  "dept": "77",
+  "dept_name": "Seine-et-Marne",
+  "pop": 54620,
+  "epci": "CA Paris - Vallée de la Marne"
+ },
+ {
+  "name": "Pomponne",
+  "slug": "pomponne",
+  "group": "Vallée de la Marne et Marne-la-Vallée",
+  "dist_site": "11",
+  "dist": 12.3,
+  "bearing": 157,
+  "lat": 48.8813,
+  "lon": 2.68232,
+  "insee": "77372",
+  "cp": [
+   "77400"
+  ],
+  "dept": "77",
+  "dept_name": "Seine-et-Marne",
+  "pop": 4215,
+  "epci": "CA Marne et Gondoire"
+ },
+ {
+  "name": "Thorigny-sur-Marne",
+  "slug": "thorigny-sur-marne",
+  "group": "Vallée de la Marne et Marne-la-Vallée",
+  "dist_site": "12",
+  "dist": 13.0,
+  "bearing": 145,
+  "lat": 48.88689,
+  "lon": 2.71806,
+  "insee": "77464",
+  "cp": [
+   "77400"
+  ],
+  "dept": "77",
+  "dept_name": "Seine-et-Marne",
+  "pop": 10440,
+  "epci": "CA Marne et Gondoire"
+ },
+ {
+  "name": "Vaires-sur-Marne",
+  "slug": "vaires-sur-marne",
+  "group": "Vallée de la Marne et Marne-la-Vallée",
+  "dist_site": "12",
+  "dist": 12.0,
+  "bearing": 172,
+  "lat": 48.87649,
+  "lon": 2.63982,
+  "insee": "77479",
+  "cp": [
+   "77360"
+  ],
+  "dept": "77",
+  "dept_name": "Seine-et-Marne",
+  "pop": 13931,
+  "epci": "CA Paris - Vallée de la Marne"
+ },
+ {
+  "name": "Lagny-sur-Marne",
+  "slug": "lagny-sur-marne",
+  "group": "Vallée de la Marne et Marne-la-Vallée",
+  "dist_site": "14",
+  "dist": 14.9,
+  "bearing": 151,
+  "lat": 48.86667,
+  "lon": 2.71667,
+  "insee": "77243",
+  "cp": [
+   "77400"
+  ],
+  "dept": "77",
+  "dept_name": "Seine-et-Marne",
+  "pop": 21461,
+  "epci": "CA Marne et Gondoire"
+ },
+ {
+  "name": "Torcy",
+  "slug": "torcy",
+  "group": "Vallée de la Marne et Marne-la-Vallée",
+  "dist_site": "14",
+  "dist": 15.0,
+  "bearing": 170,
+  "lat": 48.85064,
+  "lon": 2.65078,
+  "insee": "77468",
+  "cp": [
+   "77200"
+  ],
+  "dept": "77",
+  "dept_name": "Seine-et-Marne",
+  "pop": 22810,
+  "epci": "CA Paris - Vallée de la Marne"
+ },
+ {
+  "name": "Champs-sur-Marne",
+  "slug": "champs-sur-marne",
+  "group": "Vallée de la Marne et Marne-la-Vallée",
+  "dist_site": "14",
+  "dist": 14.9,
+  "bearing": 185,
+  "lat": 48.85,
+  "lon": 2.6,
+  "insee": "77083",
+  "cp": [
+   "77420"
+  ],
+  "dept": "77",
+  "dept_name": "Seine-et-Marne",
+  "pop": 27451,
+  "epci": "CA Paris - Vallée de la Marne"
+ },
+ {
+  "name": "Noisiel",
+  "slug": "noisiel",
+  "group": "Vallée de la Marne et Marne-la-Vallée",
+  "dist_site": "15",
+  "dist": 15.0,
+  "bearing": 178,
+  "lat": 48.84868,
+  "lon": 2.62435,
+  "insee": "77337",
+  "cp": [
+   "77186"
+  ],
+  "dept": "77",
+  "dept_name": "Seine-et-Marne",
+  "pop": 16053,
+  "epci": "CA Paris - Vallée de la Marne"
+ },
+ {
+  "name": "Montévrain",
+  "slug": "montevrain",
+  "group": "Vallée de la Marne et Marne-la-Vallée",
+  "dist_site": "16",
+  "dist": 15.6,
+  "bearing": 141,
+  "lat": 48.87415,
+  "lon": 2.75114,
+  "insee": "77307",
+  "cp": [
+   "77144"
+  ],
+  "dept": "77",
+  "dept_name": "Seine-et-Marne",
+  "pop": 15687,
+  "epci": "CA Marne et Gondoire"
+ },
+ {
+  "name": "Bussy-Saint-Georges",
+  "slug": "bussy-saint-georges",
+  "group": "Vallée de la Marne et Marne-la-Vallée",
+  "dist_site": "18",
+  "dist": 17.0,
+  "bearing": 159,
+  "lat": 48.84099,
+  "lon": 2.70165,
+  "insee": "77058",
+  "cp": [
+   "77600"
+  ],
+  "dept": "77",
+  "dept_name": "Seine-et-Marne",
+  "pop": 27498,
+  "epci": "CA Marne et Gondoire"
+ },
+ {
+  "name": "Magny-le-Hongre",
+  "slug": "magny-le-hongre",
+  "group": "Vallée de la Marne et Marne-la-Vallée",
+  "dist_site": "19",
+  "dist": 19.7,
+  "bearing": 133,
+  "lat": 48.86325,
+  "lon": 2.81546,
+  "insee": "77268",
+  "cp": [
+   "77700"
+  ],
+  "dept": "77",
+  "dept_name": "Seine-et-Marne",
+  "pop": 9060,
+  "epci": "CA Val d'Europe Agglomération"
+ },
+ {
+  "name": "Serris",
+  "slug": "serris",
+  "group": "Vallée de la Marne et Marne-la-Vallée",
+  "dist_site": "20",
+  "dist": 19.7,
+  "bearing": 141,
+  "lat": 48.84528,
+  "lon": 2.78611,
+  "insee": "77449",
+  "cp": [
+   "77700"
+  ],
+  "dept": "77",
+  "dept_name": "Seine-et-Marne",
+  "pop": 10326,
+  "epci": "CA Val d'Europe Agglomération"
+ },
+ {
+  "name": "Esbly",
+  "slug": "esbly",
+  "group": "Pays de Meaux et Brie des rivières",
+  "dist_site": "17",
+  "dist": 16.7,
+  "bearing": 121,
+  "lat": 48.9052,
+  "lon": 2.81235,
+  "insee": "77171",
+  "cp": [
+   "77450"
+  ],
+  "dept": "77",
+  "dept_name": "Seine-et-Marne",
+  "pop": 6072,
+  "epci": "CA Val d'Europe Agglomération"
+ },
+ {
+  "name": "Meaux",
+  "slug": "meaux",
+  "group": "Pays de Meaux et Brie des rivières",
+  "dist_site": "21",
+  "dist": 19.3,
+  "bearing": 98,
+  "lat": 48.96014,
+  "lon": 2.87885,
+  "insee": "77284",
+  "cp": [
+   "77100"
+  ],
+  "dept": "77",
+  "dept_name": "Seine-et-Marne",
+  "pop": 56905,
+  "epci": "CA du Pays de Meaux"
+ },
+ {
+  "name": "Trilport",
+  "slug": "trilport",
+  "group": "Pays de Meaux et Brie des rivières",
+  "dist_site": "26",
+  "dist": 24.6,
+  "bearing": 97,
+  "lat": 48.95685,
+  "lon": 2.95076,
+  "insee": "77475",
+  "cp": [
+   "77470"
+  ],
+  "dept": "77",
+  "dept_name": "Seine-et-Marne",
+  "pop": 5146,
+  "epci": "CA du Pays de Meaux"
+ },
+ {
+  "name": "La Ferté-sous-Jouarre",
+  "slug": "la-ferte-sous-jouarre",
+  "group": "Pays de Meaux et Brie des rivières",
+  "dist_site": "38",
+  "dist": 37.4,
+  "bearing": 95,
+  "lat": 48.9514,
+  "lon": 3.12724,
+  "insee": "77183",
+  "cp": [
+   "77260"
+  ],
+  "dept": "77",
+  "dept_name": "Seine-et-Marne",
+  "pop": 10254,
+  "epci": "CA Coulommiers Pays de Brie"
+ },
+ {
+  "name": "Coulommiers",
+  "slug": "coulommiers",
+  "group": "Pays de Meaux et Brie des rivières",
+  "dist_site": "40",
+  "dist": 39.0,
+  "bearing": 119,
+  "lat": 48.81451,
+  "lon": 3.08498,
+  "insee": "77131",
+  "cp": [
+   "77120"
+  ],
+  "dept": "77",
+  "dept_name": "Seine-et-Marne",
+  "pop": 16374,
+  "epci": "CA Coulommiers Pays de Brie"
+ },
+ {
+  "name": "Roissy-en-Brie",
+  "slug": "roissy-en-brie",
+  "group": "Plateau de Brie",
+  "dist_site": "21",
+  "dist": 21.4,
+  "bearing": 174,
+  "lat": 48.79159,
+  "lon": 2.64747,
+  "insee": "77390",
+  "cp": [
+   "77680"
+  ],
+  "dept": "77",
+  "dept_name": "Seine-et-Marne",
+  "pop": 23229,
+  "epci": "CA Paris - Vallée de la Marne"
+ },
+ {
+  "name": "Pontault-Combault",
+  "slug": "pontault-combault",
+  "group": "Plateau de Brie",
+  "dist_site": "21",
+  "dist": 20.6,
+  "bearing": 182,
+  "lat": 48.79813,
+  "lon": 2.60676,
+  "insee": "77373",
+  "cp": [
+   "77340"
+  ],
+  "dept": "77",
+  "dept_name": "Seine-et-Marne",
+  "pop": 39096,
+  "epci": "CA Paris - Vallée de la Marne"
+ },
+ {
+  "name": "Ozoir-la-Ferrière",
+  "slug": "ozoir-la-ferriere",
+  "group": "Plateau de Brie",
+  "dist_site": "24",
+  "dist": 24.4,
+  "bearing": 171,
+  "lat": 48.76699,
+  "lon": 2.66871,
+  "insee": "77350",
+  "cp": [
+   "77330"
+  ],
+  "dept": "77",
+  "dept_name": "Seine-et-Marne",
+  "pop": 21238,
+  "epci": "CC Les Portes Briardes Entre Villes et Forêts"
+ },
+ {
+  "name": "Tournan-en-Brie",
+  "slug": "tournan-en-brie",
+  "group": "Plateau de Brie",
+  "dist_site": "29",
+  "dist": 29.2,
+  "bearing": 157,
+  "lat": 48.74146,
+  "lon": 2.772,
+  "insee": "77470",
+  "cp": [
+   "77220"
+  ],
+  "dept": "77",
+  "dept_name": "Seine-et-Marne",
+  "pop": 8274,
+  "epci": "CC Les Portes Briardes Entre Villes et Forêts"
+ },
+ {
+  "name": "Roissy-en-France",
+  "slug": "roissy-en-france",
+  "group": "Est du Val-d'Oise",
+  "dist_site": "7,9",
+  "dist": 7.6,
+  "bearing": 288,
+  "lat": 49.00443,
+  "lon": 2.51703,
+  "insee": "95527",
+  "cp": [
+   "95700"
+  ],
+  "dept": "95",
+  "dept_name": "Val-d'Oise",
+  "pop": 2674,
+  "epci": "CA Roissy Pays de France"
+ },
+ {
+  "name": "Louvres",
+  "slug": "louvres",
+  "group": "Est du Val-d'Oise",
+  "dist_site": "11",
+  "dist": 10.6,
+  "bearing": 310,
+  "lat": 49.0446,
+  "lon": 2.50479,
+  "insee": "95351",
+  "cp": [
+   "95380"
+  ],
+  "dept": "95",
+  "dept_name": "Val-d'Oise",
+  "pop": 12560,
+  "epci": "CA Roissy Pays de France"
+ },
+ {
+  "name": "Gonesse",
+  "slug": "gonesse",
+  "group": "Est du Val-d'Oise",
+  "dist_site": "11",
+  "dist": 12.2,
+  "bearing": 272,
+  "lat": 48.98693,
+  "lon": 2.44892,
+  "insee": "95277",
+  "cp": [
+   "95500"
+  ],
+  "dept": "95",
+  "dept_name": "Val-d'Oise",
+  "pop": 27707,
+  "epci": "CA Roissy Pays de France"
+ },
+ {
+  "name": "Goussainville",
+  "slug": "goussainville",
+  "group": "Est du Val-d'Oise",
+  "dist_site": "12",
+  "dist": 11.5,
+  "bearing": 287,
+  "lat": 49.01367,
+  "lon": 2.46595,
+  "insee": "95280",
+  "cp": [
+   "95190"
+  ],
+  "dept": "95",
+  "dept_name": "Val-d'Oise",
+  "pop": 31301,
+  "epci": "CA Roissy Pays de France"
+ },
+ {
+  "name": "Arnouville",
+  "slug": "arnouville",
+  "group": "Est du Val-d'Oise",
+  "dist_site": "14",
+  "dist": 14.6,
+  "bearing": 270,
+  "lat": 48.98333,
+  "lon": 2.41667,
+  "insee": "95019",
+  "cp": [
+   "95400"
+  ],
+  "dept": "95",
+  "dept_name": "Val-d'Oise",
+  "pop": 15023,
+  "epci": "CA Roissy Pays de France"
+ },
+ {
+  "name": "Garges-lès-Gonesse",
+  "slug": "garges-les-gonesse",
+  "group": "Est du Val-d'Oise",
+  "dist_site": "15",
+  "dist": 16.1,
+  "bearing": 264,
+  "lat": 48.96791,
+  "lon": 2.39781,
+  "insee": "95268",
+  "cp": [
+   "95140"
+  ],
+  "dept": "95",
+  "dept_name": "Val-d'Oise",
+  "pop": 41791,
+  "epci": "CA Roissy Pays de France"
+ },
+ {
+  "name": "Villiers-le-Bel",
+  "slug": "villiers-le-bel",
+  "group": "Est du Val-d'Oise",
+  "dist_site": "16",
+  "dist": 16.2,
+  "bearing": 280,
+  "lat": 49.00875,
+  "lon": 2.39819,
+  "insee": "95680",
+  "cp": [
+   "95400"
+  ],
+  "dept": "95",
+  "dept_name": "Val-d'Oise",
+  "pop": 30053,
+  "epci": "CA Roissy Pays de France"
+ },
+ {
+  "name": "Fosses",
+  "slug": "fosses",
+  "group": "Est du Val-d'Oise",
+  "dist_site": "16",
+  "dist": 15.0,
+  "bearing": 329,
+  "lat": 49.09808,
+  "lon": 2.50957,
+  "insee": "95250",
+  "cp": [
+   "95470"
+  ],
+  "dept": "95",
+  "dept_name": "Val-d'Oise",
+  "pop": 10570,
+  "epci": "CA Roissy Pays de France"
+ },
+ {
+  "name": "Sarcelles",
+  "slug": "sarcelles",
+  "group": "Est du Val-d'Oise",
+  "dist_site": "17",
+  "dist": 17.5,
+  "bearing": 275,
+  "lat": 48.99739,
+  "lon": 2.37821,
+  "insee": "95585",
+  "cp": [
+   "95200"
+  ],
+  "dept": "95",
+  "dept_name": "Val-d'Oise",
+  "pop": 59173,
+  "epci": "CA Roissy Pays de France"
+ },
+ {
+  "name": "Nanteuil-le-Haudouin",
+  "slug": "nanteuil-le-haudouin",
+  "group": "Sud de l'Oise",
+  "dist_site": "23",
+  "dist": 22.5,
+  "bearing": 39,
+  "lat": 49.14082,
+  "lon": 2.81142,
+  "insee": "60446",
+  "cp": [
+   "60440"
+  ],
+  "dept": "60",
+  "dept_name": "Oise",
+  "pop": 4258,
+  "epci": "CC du Pays de Valois"
+ },
+ {
+  "name": "Chantilly",
+  "slug": "chantilly",
+  "group": "Sud de l'Oise",
+  "dist_site": "24",
+  "dist": 25.8,
+  "bearing": 336,
+  "lat": 49.19461,
+  "lon": 2.47124,
+  "insee": "60141",
+  "cp": [
+   "60500"
+  ],
+  "dept": "60",
+  "dept_name": "Oise",
+  "pop": 10591,
+  "epci": "CC de l'Aire Cantilienne"
+ },
+ {
+  "name": "Senlis",
+  "slug": "senlis",
+  "group": "Sud de l'Oise",
+  "dist_site": "26",
+  "dist": 25.0,
+  "bearing": 355,
+  "lat": 49.20724,
+  "lon": 2.58661,
+  "insee": "60612",
+  "cp": [
+   "60300"
+  ],
+  "dept": "60",
+  "dept_name": "Oise",
+  "pop": 15157,
+  "epci": "CC Senlis Sud Oise"
+ },
+ {
+  "name": "Crépy-en-Valois",
+  "slug": "crepy-en-valois",
+  "group": "Sud de l'Oise",
+  "dist_site": "35",
+  "dist": 34.1,
+  "bearing": 35,
+  "lat": 49.23359,
+  "lon": 2.88807,
+  "insee": "60176",
+  "cp": [
+   "60800"
+  ],
+  "dept": "60",
+  "dept_name": "Oise",
+  "pop": 14351,
+  "epci": "CC du Pays de Valois"
+ },
+ {
+  "name": "Bry-sur-Marne",
+  "slug": "bry-sur-marne",
+  "group": "Bords de Marne (Val-de-Marne)",
+  "dist_site": "17",
+  "dist": 17.5,
+  "bearing": 203,
+  "lat": 48.83811,
+  "lon": 2.52488,
+  "insee": "94015",
+  "cp": [
+   "94360"
+  ],
+  "dept": "94",
+  "dept_name": "Val-de-Marne",
+  "pop": 18503,
+  "epci": "Métropole du Grand Paris"
+ },
+ {
+  "name": "Le Perreux-sur-Marne",
+  "slug": "le-perreux-sur-marne",
+  "group": "Bords de Marne (Val-de-Marne)",
+  "dist_site": "17",
+  "dist": 17.1,
+  "bearing": 210,
+  "lat": 48.85,
+  "lon": 2.5,
+  "insee": "94058",
+  "cp": [
+   "94170"
+  ],
+  "dept": "94",
+  "dept_name": "Val-de-Marne",
+  "pop": 35260,
+  "epci": "Métropole du Grand Paris"
+ },
+ {
+  "name": "Fontenay-sous-Bois",
+  "slug": "fontenay-sous-bois",
+  "group": "Bords de Marne (Val-de-Marne)",
+  "dist_site": "17",
+  "dist": 17.4,
+  "bearing": 214,
+  "lat": 48.85442,
+  "lon": 2.48268,
+  "insee": "94033",
+  "cp": [
+   "94120"
+  ],
+  "dept": "94",
+  "dept_name": "Val-de-Marne",
+  "pop": 53757,
+  "epci": "Métropole du Grand Paris"
+ },
+ {
+  "name": "Villiers-sur-Marne",
+  "slug": "villiers-sur-marne",
+  "group": "Bords de Marne (Val-de-Marne)",
+  "dist_site": "18",
+  "dist": 17.7,
+  "bearing": 196,
+  "lat": 48.831,
+  "lon": 2.54844,
+  "insee": "94079",
+  "cp": [
+   "94350"
+  ],
+  "dept": "94",
+  "dept_name": "Val-de-Marne",
+  "pop": 33162,
+  "epci": "Métropole du Grand Paris"
+ },
+ {
+  "name": "Nogent-sur-Marne",
+  "slug": "nogent-sur-marne",
+  "group": "Bords de Marne (Val-de-Marne)",
+  "dist_site": "18",
+  "dist": 19.0,
+  "bearing": 211,
+  "lat": 48.83669,
+  "lon": 2.48255,
+  "insee": "94052",
+  "cp": [
+   "94130"
+  ],
+  "dept": "94",
+  "dept_name": "Val-de-Marne",
+  "pop": 32455,
+  "epci": "Métropole du Grand Paris"
+ },
+ {
+  "name": "Champigny-sur-Marne",
+  "slug": "champigny-sur-marne",
+  "group": "Bords de Marne (Val-de-Marne)",
+  "dist_site": "19",
+  "dist": 20.6,
+  "bearing": 206,
+  "lat": 48.81642,
+  "lon": 2.49366,
+  "insee": "94017",
+  "cp": [
+   "94500"
+  ],
+  "dept": "94",
+  "dept_name": "Val-de-Marne",
+  "pop": 78072,
+  "epci": "Métropole du Grand Paris"
+ }
+]
