@@ -1,0 +1,62 @@
+{
+ "diag-creux": {
+  "w": 1161,
+  "h": 1355,
+  "sizes": [
+   480,
+   960,
+   1161
+  ],
+  "alt": "Enduit décollé et tombé par plaque sous une fenêtre, maçonnerie apparente"
+ },
+ "diag-faiencage": {
+  "w": 1161,
+  "h": 1355,
+  "sizes": [
+   480,
+   960,
+   1161
+  ],
+  "alt": "Enduit de façade faïencé : réseau de fines craquelures près d'une fenêtre"
+ },
+ "diag-fissure": {
+  "w": 1161,
+  "h": 1355,
+  "sizes": [
+   480,
+   960,
+   1161
+  ],
+  "alt": "Fissure en escalier partant de l'angle d'une fenêtre jusque sous la toiture"
+ },
+ "diag-froid": {
+  "w": 1161,
+  "h": 1355,
+  "sizes": [
+   480,
+   960,
+   1161
+  ],
+  "alt": "Caméra thermique montrant les pertes de chaleur autour d'une fenêtre"
+ },
+ "diag-meuliere": {
+  "w": 1161,
+  "h": 1355,
+  "sizes": [
+   480,
+   960,
+   1161
+  ],
+  "alt": "Mur en pierre meulière aux joints creusés et décollés"
+ },
+ "diag-salissures": {
+  "w": 1161,
+  "h": 1355,
+  "sizes": [
+   480,
+   960,
+   1161
+  ],
+  "alt": "Façade enduite avec coulures noires sous l'appui de fenêtre et algues vertes en pied de mur"
+ }
+}

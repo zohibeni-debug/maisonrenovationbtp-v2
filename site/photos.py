@@ -42,6 +42,13 @@ ALTS = {
     "couverture-apres": "Toiture après réfection : tuiles neuves sur le versant",
     "carte-demoussage": "Démoussage d'une toiture en tuiles",
     "carte-zinguerie": "Pose d'une gouttière et d'une descente en acier laqué",
+    # photos du diagnostic de façade (accueil)
+    "diag-salissures": "Façade enduite avec coulures noires sous l'appui de fenêtre et algues vertes en pied de mur",
+    "diag-faiencage": "Enduit de façade faïencé : réseau de fines craquelures près d'une fenêtre",
+    "diag-fissure": "Fissure en escalier partant de l'angle d'une fenêtre jusque sous la toiture",
+    "diag-creux": "Enduit décollé et tombé par plaque sous une fenêtre, maçonnerie apparente",
+    "diag-meuliere": "Mur en pierre meulière aux joints creusés et décollés",
+    "diag-froid": "Caméra thermique montrant les pertes de chaleur autour d'une fenêtre",
 }
 
 
@@ -71,10 +78,11 @@ def main():
                 continue
             path = os.path.join(dp, f)
             rel = os.path.relpath(path, SRC)
-            # copie à l'ancienne adresse (le chemin relatif reproduit /assets/...)
-            dest = os.path.join(LEGACY, rel if rel.startswith("assets") else os.path.join("assets", "img", rel))
-            os.makedirs(os.path.dirname(dest), exist_ok=True)
-            shutil.copy2(path, dest)
+            # copie à l'ancienne adresse, seulement pour les images de l'ancien site (dossier assets/)
+            if rel.startswith("assets"):
+                dest = os.path.join(LEGACY, rel)
+                os.makedirs(os.path.dirname(dest), exist_ok=True)
+                shutil.copy2(path, dest)
             k = key_of(f)
             with Image.open(path) as im:
                 w = im.size[0]

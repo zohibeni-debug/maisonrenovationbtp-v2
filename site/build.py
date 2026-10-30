@@ -141,7 +141,10 @@ def has_photo(key):
     return key in PHOTOS
 
 
-def img(key, alt=None, sizes="100vw", cls="", eager=False):
+DIAG_POS = {"salissures": "50% 72%", "faiencage": "50% 50%", "fissure": "50% 30%", "creux": "50% 50%", "meuliere": "50% 50%", "froid": "40% 55%"}
+
+
+def img(key, alt=None, sizes="100vw", cls="", eager=False, pos=None):
     m = PHOTOS[key]
     widths = m["sizes"]
     w = widths[-1]
@@ -153,12 +156,23 @@ def img(key, alt=None, sizes="100vw", cls="", eager=False):
     a.append('decoding="async"')
     if cls:
         a.append(f'class="{cls}"')
+    if pos:
+        a.append(f'style="object-position:{pos}"')
     return "<img " + " ".join(a) + ">"
+
+
+def tile_or_photo(tile_key, uid, alt=None, sizes="(min-width: 960px) 40vw, 100vw", eager=False, cls="tile"):
+    """Photo du diagnostic correspondant à la texture si elle existe, sinon l'illustration dessinée."""
+    if has_photo("diag-" + tile_key):
+        return img("diag-" + tile_key, alt, sizes, cls=cls, eager=eager, pos=DIAG_POS.get(tile_key))
+    return art.tile(tile_key, uid, cls=cls, label=alt)
 
 
 def visual(photo_key, tile_key, uid, alt, sizes="(min-width: 960px) 40vw, 100vw", eager=False):
     if photo_key and has_photo(photo_key):
         return f'<figure class="visual">{img(photo_key, alt, sizes, eager=eager)}</figure>'
+    if has_photo("diag-" + tile_key):
+        return f'<figure class="visual">{tile_or_photo(tile_key, uid, PHOTOS["diag-" + tile_key]["alt"], sizes, eager)}</figure>'
     return f'<figure class="visual visual-art">{art.tile(tile_key, uid, label=alt)}</figure>'
 
 
@@ -567,7 +581,8 @@ def diag_module():
         sel = "true" if i == 0 else "false"
         hid = "" if i == 0 else " hidden"
         tabs.append(f'<li role="presentation"><button type="button" role="tab" id="dt-{d["key"]}" aria-controls="dp-{d["key"]}" aria-selected="{sel}" tabindex="{0 if i == 0 else -1}" data-key="{d["key"]}"><span class="dt-dot"></span>{esc(d["label"])}</button></li>')
-        stage.append(f'<div class="ds" data-tile="{d["key"]}"{hid}>{art.tile(d["key"], "h" + str(i), label=d["title"])}</div>')
+        alt = PHOTOS["diag-" + d["key"]]["alt"] if has_photo("diag-" + d["key"]) else d["title"]
+        stage.append(f'<div class="ds" data-tile="{d["key"]}"{hid}>{tile_or_photo(d["key"], "h" + str(i), alt, "(min-width: 900px) 55vw, 100vw")}</div>')
         if d["price"]:
             a, b, u, _ = C.PRICES[d["price"]]
             price = f'<p class="dp-price"><small>Budget indicatif</small><strong>{a} à {b} {u}</strong></p>'
@@ -796,7 +811,7 @@ def build_guide(g):
 def build_conseils():
     cards = []
     for i, g in enumerate(G.GUIDES):
-        cards.append(f'<li class="gc"><a href="/{g["slug"]}/">{art.tile(g["tile"], "c" + str(i))}<span class="gc-t">{esc(g["name"])}</span><span class="gc-d">{esc(g["desc"])}</span></a></li>')
+        cards.append(f'<li class="gc"><a href="/{g["slug"]}/">{tile_or_photo(g["tile"], "c" + str(i), "", "(min-width: 900px) 30vw, 100vw")}<span class="gc-t">{esc(g["name"])}</span><span class="gc-d">{esc(g["desc"])}</span></a></li>')
     svc = "".join(f'<li><a href="/{s["slug"]}/"><span>{esc(s["name"])}</span><small>{esc(SHORT[s["slug"]])}</small></a></li>' for s in SV.SERVICES)
     body = f"""
 <section class="ph ph-plain"><div class="wrap narrow"><h1>Conseils pour votre ravalement</h1><p class="lead">{esc(G.CONSEILS_INTRO)}</p></div></section>

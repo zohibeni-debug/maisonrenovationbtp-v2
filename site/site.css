@@ -209,7 +209,7 @@ strong { font-weight: 700; }
 .diag-stage { position: relative; min-height: 460px; background: var(--sable-2); }
 .ds { position: absolute; inset: 0; }
 .ds[hidden] { display: none; }
-.ds .tile { width: 100%; height: 100%; }
+.ds .tile { width: 100%; height: 100%; object-fit: cover; }
 .js .ds.is-in { animation: fade .45s ease both; }
 @keyframes fade { from { opacity: 0; transform: scale(1.02); } to { opacity: 1; transform: none; } }
 .diag-side { padding: clamp(22px, 3vw, 38px); display: flex; flex-direction: column; }
@@ -485,7 +485,8 @@ html:not(.js) .diag-tabs { display: none; }
 /* Conseils */
 .guide-cards { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 2.5vw, 32px); }
 .gc a { display: flex; flex-direction: column; height: 100%; background: var(--sable); border-radius: 22px; overflow: hidden; text-decoration: none; color: var(--encre); }
-.gc .tile { aspect-ratio: 16 / 10; width: 100%; height: auto; transition: transform .5s ease; }
+.gc .tile { aspect-ratio: 16 / 10; width: 100%; height: auto; object-fit: cover; transition: transform .5s ease; }
+.gc a { overflow: hidden; }
 .gc a:hover .tile { transform: scale(1.04); }
 .gc-t { font-weight: 800; font-stretch: 112%; font-size: 1.35rem; letter-spacing: -.01em; padding: 1.2rem 1.3rem .4rem; }
 .gc-d { color: var(--gris); font-size: .95rem; padding: 0 1.3rem 1.4rem; }
@@ -562,3 +563,7 @@ html:not(.js) .sw-list { display: none; }
   .hero-video { color: #000; background: none; }
 }
 .sec-sable .zones-map { background: #fff; }
+/* Diagnostic : hauteur stable d'un onglet à l'autre (tous les panneaux occupent la même cellule) */
+.js .diag-panels { display: grid; }
+.js .diag-panels .dp { grid-area: 1 / 1; }
+.js .diag-panels .dp[hidden] { display: block; visibility: hidden; }
