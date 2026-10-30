@@ -20,11 +20,15 @@ Il compte 93 pages, toutes aux mêmes adresses que sur l'ancien site :
 | `site/guides.py` | Prix, déclaration préalable, couleur, textes des pages conseils et zones |
 | `site/communes.py`, `site/communes_data.json` | Les 73 communes : données INSEE, coordonnées, textes par secteur et par commune |
 | `site/art.py` | Illustrations dessinées (textures de façade) et cartes |
+| `site/logo.py`, `site/logo_parts.json` | Logo vectorisé (tracé depuis `site/brand-src/`) : versions couleur, claire, horizontale et animée |
+| `site/video/` | Vidéo de fond de l'accueil (MP4, WebM, image d'attente) |
 | `site/build.py` | Le générateur : produit `public/` |
 | `site/photos.py` | Prépare les photos déposées dans `site/photos-src/` |
 | `site/site.css`, `site/site.js` | Styles et scripts |
 | `tools/verifier.py` | Contrôles : liens, balises, données structurées, anciennes adresses |
-| `tools/visuels.py` | Image de partage et icônes |
+| `tools/visuels.py` | Image de partage, icônes et logo PNG |
+| `tools/logo_trace.py` | Vectorise le logo (`site/brand-src/logo-artisan-druart.png`) |
+| `tools/video_hero.py` | Génère la vidéo de fond provisoire |
 | `wrangler.jsonc` | Configuration Cloudflare |
 
 ## Modifier le site
@@ -90,4 +94,16 @@ Sans photo, le site utilise ses illustrations dessinées. Pour ajouter les photo
 - `assets/img/carte-enduit-8d38b9a8.jpg` ;
 - `assets/logo-artisan-druart-2ea109d7.png`.
 
-Lancez ensuite `site/photos.py` puis `site/build.py`. Les photos sont alors converties en WebP et placées dans les pages. Le logo remplace le pictogramme, et les blocs avant/après de l'accueil apparaissent. Chaque fichier d'origine est aussi recopié à son ancienne adresse.
+Lancez ensuite `site/photos.py` puis `site/build.py`. Les photos sont alors converties en WebP et placées dans les pages, et les blocs avant/après de l'accueil apparaissent. Chaque fichier d'origine est aussi recopié à son ancienne adresse.
+
+## Vidéo de l'accueil
+
+La vidéo actuelle est une animation générée (`tools/video_hero.py`) : un mur ravalé au rouleau derrière un échafaudage, en boucle. Pour la remplacer par une vraie vidéo de chantier :
+
+```bash
+ffmpeg -i chantier.mp4 -t 12 -vf "scale=1280:-2" -an -c:v libx264 -preset veryfast -crf 27 -pix_fmt yuv420p -movflags +faststart site/video/hero.mp4
+ffmpeg -i chantier.mp4 -t 12 -vf "scale=1280:-2" -an -c:v libvpx-vp9 -b:v 0 -crf 40 site/video/hero.webm
+ffmpeg -i site/video/hero.mp4 -frames:v 1 -q:v 4 site/video/hero-poster.jpg
+```
+
+La vidéo n'est chargée ni si le visiteur a demandé moins d'animations, ni en mode économie de données : seule l'image d'attente s'affiche alors.

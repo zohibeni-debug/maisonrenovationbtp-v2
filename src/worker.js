@@ -99,9 +99,10 @@ async function handleDevis(request, env) {
     page: clean(data.page, 120),
   };
 
-  if (!d.nom || !d.commune || !d.type || !d.message) {
-    return json({ ok: false, error: "Complétez le nom, la commune, le type de travaux et la description." }, 400);
+  if (!d.nom || !d.commune || !d.type) {
+    return json({ ok: false, error: "Complétez le nom, la commune et le type de travaux." }, 400);
   }
+  if (!d.message) d.message = "(Pas de description : à préciser lors du rappel.)";
   if (!/^[+0-9 .()-]{8,20}$/.test(d.telephone)) {
     return json({ ok: false, error: "Le numéro de téléphone semble incomplet." }, 400);
   }

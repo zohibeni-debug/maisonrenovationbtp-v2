@@ -16,6 +16,7 @@ from datetime import date
 
 import art
 import communes as CM
+import logo as LG
 import content as C
 import guides as G
 import services as SV
@@ -52,7 +53,7 @@ def fr(text):
         if p.startswith("<"):
             out.append(p)
             continue
-        p = re.sub(r" ([?!;])", "\u202f\\1", p)
+        p = re.sub(r" ([?!;])", "\u00a0\\1", p)
         p = re.sub(r" :(?=\s|$)", "\u00a0:", p)
         p = p.replace("« ", "«\u00a0").replace(" »", "\u00a0»")
         p = re.sub(r"(\d) (km|m²|m|cm|mm|h|%|€|°C|ans|semaines|jours|heures|habitants|€/m²|€/ml)(?=[\s.,;)]|$)", "\\1\u00a0\\2", p)
@@ -64,7 +65,7 @@ def fr(text):
 
 def money(v):
     v = int(round(v / 50.0) * 50)
-    return f"{v:,}".replace(",", "\u202f") + "\u00a0€"
+    return f"{v:,}".replace(",", "\u00a0") + "\u00a0€"
 
 
 def jsonld(obj):
@@ -176,7 +177,7 @@ def org_schema():
         "alternateName": [B["gbp"], B["short"]],
         "url": URL + "/",
         "image": URL + "/assets/og-image.jpg",
-        "logo": URL + ("/assets/img/logo.png" if has_photo("logo") else "/assets/icon-512.png"),
+        "logo": URL + "/assets/logo.png",
         "telephone": B["phone_e164"],
         "email": B["email"],
         "priceRange": "€€",
@@ -247,6 +248,13 @@ def devis_btn(cls="btn btn-ghost", label="Demander un devis gratuit", href="#dev
 
 
 def brand_html():
+    return ('<img class="lg-full lg-dark" src="/assets/logo-h.svg" width="300" height="46" alt="Artisan Druart, couverture et ravalement">'
+            '<img class="lg-full lg-light" src="/assets/logo-h-light.svg" width="300" height="46" alt="Artisan Druart, couverture et ravalement">'
+            '<img class="lg-mark lg-dark" src="/assets/logo-mark.svg" width="101" height="44" alt="Artisan Druart">'
+            '<img class="lg-mark lg-light" src="/assets/logo-mark-light.svg" width="101" height="44" alt="Artisan Druart">')
+
+
+def brand_html_old():
     if has_photo("logo"):
         m = PHOTOS["logo"]
         ss = ", ".join(f"/assets/img/logo-{w}.webp {w}w" for w in m["sizes"])
@@ -288,7 +296,7 @@ def header(current):
 </header>"""
 
 
-def footer():
+def footer(cls=""):
     fac = "".join(f'<li><a href="/{s["slug"]}/">{esc(s["nav"])}</a></li>' for s in SV.FACADE)
     toi = "".join(f'<li><a href="/{s["slug"]}/">{esc(s["nav"])}</a></li>' for s in SV.TOITURE)
     gui = "".join(f'<li><a href="/{g["slug"]}/">{esc(g["nav"])}</a></li>' for g in G.GUIDES)
@@ -297,7 +305,7 @@ def footer():
     return f"""<footer class="ft">
   <div class="wrap ft-grid">
     <div class="ft-id">
-      <a class="brand brand-ft" href="/">{MARK}<span class="wm"><span class="wm-a">Artisan Druart</span><span class="wm-b">Maison Rénovation</span></span></a>
+      <a href="/" aria-label="{esc(B['name'])}, accueil"><img class="ft-logo" src="/assets/logo-light.svg" width="220" height="135" alt="Artisan Druart, couverture et ravalement"></a>
       <p>Façadier et couvreur à Mitry-Mory. Ravalement, enduit, peinture, meulière, isolation par l'extérieur et toiture, dans un rayon de 50 km.</p>
       <address>
         <p>{ICONS['pin']}<span>{esc(B['street'])}<br>{B['postcode']} {B['city']}</span></p>
@@ -314,10 +322,10 @@ def footer():
     <p><a href="/mentions-legales/">Mentions légales</a> <a href="/contact/">Contact</a> <a href="{B['sister_url']}" rel="noopener">Notre site toiture</a> <a href="https://allositeweb.com/" rel="noopener">Site réalisé par ALLOSITEWEB</a></p>
   </div>
 </footer>
-<div class="callbar" data-callbar>{tel_btn('btn btn-primary', 'Appeler')}<a class="btn btn-ghost" href="/contact/#devis"><span>Devis gratuit</span></a></div>"""
+<div class="callbar" data-callbar>{tel_btn('btn btn-primary', 'Appeler')}<a class="btn btn-ghost" href="{'/contact/#devis' if cls in ('p-legal', 'p-404') else '#devis'}"><span>Devis gratuit</span></a></div>"""
 
 
-def page(path, title, desc, body, crumbs=None, schema=None, current=None, robots="index,follow", priority="0.6", cls="", og_title=None):
+def page(path, title, desc, body, crumbs=None, schema=None, current=None, robots="index,follow", priority="0.6", cls="", og_title=None, extra_head=""):
     canonical = URL + (path if path != "/404.html" else "/")
     crumbs_html = ""
     schemas = [website_schema(), org_schema()] if path == "/" else []
@@ -358,8 +366,7 @@ def page(path, title, desc, body, crumbs=None, schema=None, current=None, robots
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
-<link rel="preload" href="{ASSETS['font_display']}" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="{ASSETS['font_text']}" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{ASSETS['font']}" as="font" type="font/woff2" crossorigin>{extra_head}
 <link rel="stylesheet" href="{ASSETS['css']}">
 <script>{EARLY_JS}</script>
 <script src="{ASSETS['js']}" defer></script>
@@ -371,7 +378,7 @@ def page(path, title, desc, body, crumbs=None, schema=None, current=None, robots
 {crumbs_html}
 {re.sub(r"<h1>(.*?)</h1>", lambda m: "<h1>" + nw(m.group(1)) + "</h1>", fr(body), flags=re.S)}
 </main>
-{fr(footer())}
+{fr(footer(cls))}
 </body>
 </html>
 """
@@ -463,10 +470,39 @@ def before_after(before, after, cap_before, cap_after, label):
 <figcaption>{esc(label)}</figcaption></figure>"""
 
 
-def form_section(commune=None, title="Demandez votre devis gratuit", type_default=None):
+def form_html(commune=None, type_default=None, compact=False):
     opts = "".join(f'<option{" selected" if t == type_default else ""}>{esc(t)}</option>' for t in C.WORK_TYPES)
     dl = "".join(f'<option value="{esc(c["name"])}">' for c in sorted(CM.COMMUNES, key=lambda c: c["name"])) + '<option value="Mitry-Mory">'
     val = f' value="{esc(commune)}"' if commune else ""
+    mail = "" if compact else '''<div class="f-row"><label for="f-mail">Email <small>(facultatif)</small></label><input id="f-mail" name="email" type="email" autocomplete="email" maxlength="120"></div>'''
+    tel_mail = (f'''<div class="f-two"><div class="f-row"><label for="f-tel">Téléphone</label><input id="f-tel" name="telephone" type="tel" autocomplete="tel" required pattern="[+0-9 .()\\-]{{8,20}}" maxlength="20"></div>{mail}</div>'''
+                if not compact else
+                '''<div class="f-row"><label for="f-tel">Téléphone</label><input id="f-tel" name="telephone" type="tel" autocomplete="tel" required pattern="[+0-9 .()\\-]{8,20}" maxlength="20"></div>''')
+    nom_tel = (f'''<div class="f-two"><div class="f-row"><label for="f-nom">Nom</label><input id="f-nom" name="nom" autocomplete="name" required maxlength="80"></div>
+<div class="f-row"><label for="f-tel">Téléphone</label><input id="f-tel" name="telephone" type="tel" autocomplete="tel" required pattern="[+0-9 .()\\-]{{8,20}}" maxlength="20"></div></div>'''
+               if compact else
+               f'''<div class="f-row"><label for="f-nom">Nom</label><input id="f-nom" name="nom" autocomplete="name" required maxlength="80"></div>{tel_mail}''')
+    rappel = "" if compact else '''<fieldset class="f-row f-radio"><legend>Rappel de préférence</legend>
+<label><input type="radio" name="rappel" value="Matin"> Matin</label><label><input type="radio" name="rappel" value="Après-midi"> Après-midi</label><label><input type="radio" name="rappel" value="Indifférent" checked> Indifférent</label></fieldset>'''
+    msg_req = "" if compact else " required"
+    msg_lab = "Votre projet <small>(facultatif)</small>" if compact else "Votre projet"
+    rows = 2 if compact else 4
+    return f"""<form class="form" id="devis-form" novalidate>
+{nom_tel}
+<div class="f-two">
+<div class="f-row"><label for="f-commune">Commune des travaux</label><input id="f-commune" name="commune" list="communes-l" required maxlength="80" autocomplete="address-level2"{val}><datalist id="communes-l">{dl}</datalist></div>
+<div class="f-row"><label for="f-type">Travaux</label><select id="f-type" name="type" required><option value="">Choisir…</option>{opts}</select></div>
+</div>
+<div class="f-row"><label for="f-msg">{msg_lab}</label><textarea id="f-msg" name="message" rows="{rows}" maxlength="3000"{msg_req} placeholder="Type de maison, état de la façade, surface approximative…"></textarea></div>
+{rappel}
+<div class="f-hp" aria-hidden="true"><label for="f-site">Site web</label><input id="f-site" name="site_web" tabindex="-1" autocomplete="off"></div>
+<label class="f-ok"><input type="checkbox" name="consentement" required> <span>J'accepte que mes coordonnées servent uniquement à traiter ma demande de devis.</span></label>
+<button class="btn btn-primary btn-big" type="submit"><span>Recevoir mon devis gratuit</span></button>
+<div class="form-status" id="form-status" role="status"></div>
+</form>"""
+
+
+def form_section(commune=None, title="Demandez votre devis gratuit", type_default=None):
     return f"""<section class="sec sec-devis" id="devis" aria-labelledby="devis-t">
 <div class="wrap devis-grid">
 <div class="devis-txt">
@@ -480,24 +516,7 @@ def form_section(commune=None, title="Demandez votre devis gratuit", type_defaul
 <p class="devis-tel">Vous préférez appeler ? {tel_btn('btn btn-primary', B['phone'])}</p>
 <p class="small">Ou au <a href="tel:{B['phone2_e164']}">{B['phone2']}</a>, 7 jours sur 7.</p>
 </div>
-<form class="form" id="devis-form" novalidate>
-<div class="f-row"><label for="f-nom">Nom</label><input id="f-nom" name="nom" autocomplete="name" required maxlength="80"></div>
-<div class="f-two">
-<div class="f-row"><label for="f-tel">Téléphone</label><input id="f-tel" name="telephone" type="tel" autocomplete="tel" required pattern="[+0-9 .()\\-]{{8,20}}" maxlength="20"></div>
-<div class="f-row"><label for="f-mail">Email <small>(facultatif)</small></label><input id="f-mail" name="email" type="email" autocomplete="email" maxlength="120"></div>
-</div>
-<div class="f-two">
-<div class="f-row"><label for="f-commune">Commune des travaux</label><input id="f-commune" name="commune" list="communes-l" required maxlength="80"{val}><datalist id="communes-l">{dl}</datalist></div>
-<div class="f-row"><label for="f-type">Travaux</label><select id="f-type" name="type" required><option value="">Choisir…</option>{opts}</select></div>
-</div>
-<div class="f-row"><label for="f-msg">Votre projet</label><textarea id="f-msg" name="message" rows="4" required maxlength="3000" placeholder="Type de maison, état de la façade, surface approximative, délai souhaité…"></textarea></div>
-<fieldset class="f-row f-radio"><legend>Rappel de préférence</legend>
-<label><input type="radio" name="rappel" value="Matin"> Matin</label><label><input type="radio" name="rappel" value="Après-midi"> Après-midi</label><label><input type="radio" name="rappel" value="Indifférent" checked> Indifférent</label></fieldset>
-<div class="f-hp" aria-hidden="true"><label for="f-site">Site web</label><input id="f-site" name="site_web" tabindex="-1" autocomplete="off"></div>
-<label class="f-ok"><input type="checkbox" name="consentement" required> <span>J'accepte que mes coordonnées servent uniquement à traiter ma demande de devis.</span></label>
-<button class="btn btn-primary btn-big" type="submit"><span>Envoyer ma demande</span></button>
-<div class="form-status" id="form-status" role="status"></div>
-</form>
+{form_html(commune, type_default)}
 </div></section>"""
 
 
@@ -582,39 +601,51 @@ def zones_block(full=False):
     return "".join(groups)
 
 
+TICKER = ["Ravalement de façade", "Enduit", "Peinture de façade", "Nettoyage", "Traitement des fissures", "Imperméabilisation",
+          "Meulière et pierre", "Isolation par l'extérieur", "Bardage", "Couverture", "Démoussage", "Zinguerie"]
+
+
 def build_home():
     ba = before_after("ravalement-avant", "ravalement-apres", "Façade avant ravalement", "Façade après ravalement", "Ravalement d'un pavillon : avant et après")
     ba2 = before_after("couverture-avant", "couverture-apres", "Toiture avant réfection", "Toiture après réfection", "Réfection d'une couverture en tuiles : avant et après")
     ba_sec = ""
     if ba:
-        ba_sec = f"""<section class="sec sec-ba" aria-labelledby="ba-t"><div class="wrap ba-grid">
+        ba_sec = f"""<section class="sec sec-sable" aria-labelledby="ba-t"><div class="wrap ba-grid">
 <div><h2 id="ba-t">Avant, après</h2><p>Échafaudage monté, isolant posé, puis enduit de finition clair : la même façade, à quelques semaines d'écart.</p></div>{ba}</div></section>"""
     roof_vis = ba2 or visual("couverture-apres", "toiture", "rf", "Toiture en tuiles mécaniques en partie couverte de mousses")
     toit = "".join(f'<li><a href="/{s["slug"]}/"><span>{esc(s["name"])}</span><small>{esc(SHORT[s["slug"]])}</small></a></li>' for s in SV.TOITURE)
     brands = "".join(f"<li>{esc(b)}</li>" for b in C.BRANDS)
+    tick = "".join(f"<li>{esc(t)}</li>" for t in TICKER)
+    video = ""
+    if os.path.exists(os.path.join(SITE, "video", "hero.mp4")):
+        video = ('<video class="hero-vid" muted loop playsinline preload="none" poster="/assets/video/hero-poster.jpg" data-hero-video>'
+                 '<source data-src="/assets/video/hero.webm" type="video/webm"><source data-src="/assets/video/hero.mp4" type="video/mp4"></video>')
     body = f"""
-<section class="hero">
-<div class="wrap">
-<div class="hero-top">
-<div class="hero-h">
-<p class="hero-pre">Artisan Druart, façadier et couvreur à <span class="nw">Mitry-Mory</span></p>
-<h1>Ravalement de façade à Mitry-Mory et dans un rayon de 50 km</h1>
+<section class="hero-video" aria-labelledby="hero-t">
+<div class="hero-media" aria-hidden="true">{video}</div>
+<div class="wrap hero-grid">
+<div class="hero-brand">
+{LG.svg("stacked", "light", animated=True, cls="hero-logo", title="Artisan Druart, couverture et ravalement", uid="hl")}
+<h1 id="hero-t">Ravalement de façade à Mitry-Mory et dans un rayon de 50 km</h1>
+<p class="lead">Nettoyage, enduit, peinture, fissures, meulière et isolation par l'extérieur. La toiture et les gouttières reprises sur le même échafaudage.</p>
+<div class="cta-row">{tel_btn()}<span class="rate"><strong>{B['google_rating']}</strong><span><span class="stars" aria-hidden="true">★★★★★</span> {B['google_count']} avis Google</span></span></div>
 </div>
-<div class="hero-lead">
-<p class="lead">Nettoyage, enduit, peinture, fissures, meulière et isolation par l'extérieur : nous remettons en état les façades des maisons du nord-est francilien. La toiture et les gouttières peuvent être reprises sur le même échafaudage.</p>
-<div class="cta-row">{tel_btn()}{devis_btn(label="Devis gratuit")}</div>
-<ul class="proofs">
-<li><strong>{B['google_rating']}/5</strong> sur Google, {B['google_count']} avis</li>
-<li><strong>48 h</strong> pour recevoir le devis détaillé</li>
-<li><strong>Décennale</strong> attestation jointe au devis</li>
-</ul>
+<div class="hero-card" id="devis">
+<h2>Votre devis gratuit</h2>
+<p class="hc-sub">Visite offerte, devis détaillé sous 48 heures. Réponse rapide, 7 jours sur 7.</p>
+{form_html(compact=True)}
 </div>
-</div>
-{diag_module()}
 </div>
 </section>
+<div class="ticker" aria-hidden="true"><div class="ticker-in"><ul>{tick}</ul><ul>{tick}</ul></div></div>
 
-<section class="sec" aria-labelledby="postes-t">
+<div class="sec">
+<div class="wrap">
+{diag_module()}
+</div>
+</div>
+
+<section class="sec sec-sable" aria-labelledby="postes-t">
 <div class="wrap split">
 <div class="split-h">
 <h2 id="postes-t">Nos travaux de façade, poste par poste</h2>
@@ -625,9 +656,9 @@ def build_home():
 </div>
 </section>
 {ba_sec}
-<section class="sec sec-steps" aria-labelledby="etapes-t">
+<section class="sec" aria-labelledby="etapes-t">
 <div class="wrap">
-<h2 id="etapes-t">Comment se passe un ravalement avec nous</h2>
+<div class="sec-head"><h2 id="etapes-t">Comment se passe un ravalement avec nous</h2><p>Six étapes, du premier coup de fil à la réception de la façade. Vous savez toujours ce qui se passe et ce que ça coûte.</p></div>
 {steps_html()}
 </div>
 </section>
@@ -636,7 +667,7 @@ def build_home():
 <div class="wrap roof-grid">
 <div class="roof-txt">
 <h2 id="toit-t">La toiture, pendant que l'échafaudage est en place</h2>
-<p>La couverture est notre seconde activité. L'échafaudage monté pour la façade donne accès aux gouttières, aux rives et au bas de pente : on peut changer une descente, refaire un solin ou démousser le toit sans remonter de matériel. Nous intervenons aussi en urgence, 7 jours sur 7, en cas de fuite ou de tuiles envolées.</p>
+<p>La couverture est notre seconde activité. L'échafaudage monté pour la façade donne accès aux gouttières, aux rives et au bas de pente : on change une descente, on refait un solin ou on démousse le toit sans remonter de matériel. Urgences fuite ou tuiles envolées : 7 jours sur 7.</p>
 <ul class="roof-list">{toit}</ul>
 <p class="small">Projet de toiture seule ? Voir notre site de couvreur, <a href="{B['sister_url']}" rel="noopener">artisandruart.fr</a>.</p>
 </div>
@@ -644,20 +675,20 @@ def build_home():
 </div>
 </section>
 
-<section class="sec sec-trust" aria-labelledby="conf-t">
-<div class="wrap trust-grid">
-<h2 id="conf-t">Ce sur quoi vous pouvez compter</h2>
-<dl class="trust">
-<div><dt>{B['google_rating']}/5 sur Google</dt><dd>{B['google_count']} avis clients sur notre fiche, et une note de {B['mappy_rating']} sur Mappy.</dd></div>
-<div><dt>Garantie décennale</dt><dd>Responsabilité civile professionnelle et décennale, attestation jointe à chaque devis.</dd></div>
-<div><dt>Devis sous 48 h</dt><dd>Après une visite gratuite, chaque poste est chiffré et décrit : produit, surface, nombre de couches.</dd></div>
-<div><dt>Joignables 7 j/7</dt><dd>Au {B['phone']} ou au {B['phone2']}, y compris pour une urgence toiture.</dd></div>
+<section class="sec" aria-labelledby="conf-t">
+<div class="wrap">
+<div class="sec-head"><h2 id="conf-t">Ce sur quoi vous pouvez compter</h2><p>Une entreprise locale, joignable, assurée, et des devis que l'on peut comparer ligne par ligne.</p></div>
+<dl class="stats">
+<div><dt>{B['google_rating']}/5</dt><dd><strong>Note Google</strong>{B['google_count']} avis clients, et {B['mappy_rating']} sur Mappy</dd></div>
+<div><dt>48 h</dt><dd><strong>Devis détaillé</strong>après une visite gratuite, chaque poste chiffré</dd></div>
+<div><dt>10 ans</dt><dd><strong>Garantie décennale</strong>attestation jointe à chaque devis</dd></div>
+<div><dt>7 j/7</dt><dd><strong>Joignables</strong>au {B['phone']}, y compris pour une urgence toiture</dd></div>
 </dl>
 <div class="brands"><p>Nous travaillons avec les produits de</p><ul>{brands}</ul></div>
 </div>
 </section>
 
-<section class="sec sec-zones" aria-labelledby="zones-t">
+<section class="sec sec-sable" aria-labelledby="zones-t">
 <div class="wrap zones-grid">
 <div class="zones-txt">
 <h2 id="zones-t">73 communes à moins de 50 km</h2>
@@ -669,11 +700,15 @@ def build_home():
 </div>
 </section>
 {faq_html(C.HOME_FAQ)}
-{form_section()}
+<section class="sec sec-tight" aria-labelledby="cta-t"><div class="wrap">
+<div class="cta-band"><div><h2 id="cta-t">Votre façade mérite mieux qu'un coup de peinture</h2><p>Visite gratuite, diagnostic franc, devis détaillé sous 48 heures.</p></div>
+<div class="cta-row">{tel_btn()}<a class="btn btn-ghost" href="#devis"><span>Demander un devis</span></a></div></div>
+</div></section>
 """
     page("/", "Ravalement de façade Mitry-Mory (77) | Artisan Druart",
          "Ravalement de façade à Mitry-Mory et 50 km autour : nettoyage, enduit, peinture, fissures, meulière, isolation par l'extérieur, toiture. Devis gratuit sous 48 h.",
-         body, schema=[faq_schema(C.HOME_FAQ)], priority="1.0", cls="p-home")
+         body, schema=[faq_schema(C.HOME_FAQ)], priority="1.0", cls="p-home",
+         extra_head='\n<link rel="preload" href="/assets/video/hero-poster.jpg" as="image">')
 
 
 def build_service(s):
@@ -770,6 +805,7 @@ def build_conseils():
 <div class="split-h"><h2 id="fiches-t">Nos fiches travaux</h2><p>Chaque prestation a sa page : quand la choisir, comment on la réalise, ce qu'elle coûte et les questions qu'on nous pose le plus souvent.</p></div>
 <ul class="link-list">{svc}</ul></div></section>
 {faq_html(C.HOME_FAQ[2:5], "Questions courantes")}
+{form_section()}
 """
     page("/conseils/", "Conseils ravalement de façade : prix, démarches, couleurs",
          "Guides pour préparer un ravalement de façade : prix au m², déclaration préalable, choix de la couleur, et fiches de chaque travail de façade et de toiture.",
@@ -976,13 +1012,13 @@ def copy_assets():
     if os.path.exists(PUBLIC):
         shutil.rmtree(PUBLIC)
     os.makedirs(os.path.join(PUBLIC, "assets", "fonts"))
-    for name, key in (("big-shoulders.woff2", "font_display"), ("hanken-grotesk.woff2", "font_text")):
+    for name, key in (("archivo.woff2", "font"),):
         data = open(os.path.join(SITE, "fonts", name), "rb").read()
         fn = name.replace(".woff2", f".{hashlib.sha1(data).hexdigest()[:8]}.woff2")
         write(f"/assets/fonts/{fn}", data, binary=True)
         ASSETS[key] = f"/assets/fonts/{fn}"
     css = open(os.path.join(SITE, "site.css"), encoding="utf-8").read()
-    css = css.replace("__FONT_DISPLAY__", ASSETS["font_display"]).replace("__FONT_TEXT__", ASSETS["font_text"])
+    css = css.replace("__FONT__", ASSETS["font"])
     js = open(os.path.join(SITE, "site.js"), encoding="utf-8").read()
     js = js.replace("__PHONE__", B["phone_e164"]).replace("__WHATSAPP__", B["whatsapp"])
     pr = {k: [v[0], v[1]] for k, v in C.PRICES.items()}
@@ -991,16 +1027,28 @@ def copy_assets():
         fn = f"/assets/site.{h(data)[:10]}.{kind}"
         write(fn, data)
         ASSETS[kind] = fn
+    # logos SVG et vidéo
+    write("/assets/logo-h.svg", LG.svg("horizontal", "color"))
+    write("/assets/logo-h-light.svg", LG.svg("horizontal", "light"))
+    write("/assets/logo-mark.svg", LG.svg("mark", "color"))
+    write("/assets/logo-mark-light.svg", LG.svg("mark", "light"))
+    write("/assets/logo-light.svg", LG.svg("stacked", "light"))
+    write("/assets/logo.svg", LG.svg("stacked", "color"))
+    write("/favicon.svg", LG.favicon())
+    vid = os.path.join(SITE, "video")
+    if os.path.isdir(vid):
+        for f in os.listdir(vid):
+            write(f"/assets/video/{f}", open(os.path.join(vid, f), "rb").read(), binary=True)
     img_src = os.path.join(SITE, "img-out")
     if os.path.isdir(img_src):
         shutil.copytree(img_src, os.path.join(PUBLIC, "assets", "img"), dirs_exist_ok=True)
     legacy = os.path.join(SITE, "legacy-out")
     if os.path.isdir(legacy):
         shutil.copytree(legacy, PUBLIC, dirs_exist_ok=True)
-    for f in ("og-image.jpg", "icon-512.png", "icon-192.png", "apple-touch-icon.png", "favicon.ico", "favicon.svg"):
+    for f in ("og-image.jpg", "icon-512.png", "icon-192.png", "apple-touch-icon.png", "favicon.ico", "logo.png", "logo-artisan-druart-2ea109d7.png"):
         p = os.path.join(SITE, "brand", f)
         if os.path.exists(p):
-            dest = f"/assets/{f}" if f.startswith(("og-", "icon-")) else f"/{f}"
+            dest = f"/assets/{f}" if f.startswith(("og-", "icon-", "logo")) else f"/{f}"
             write(dest, open(p, "rb").read(), binary=True)
 
 

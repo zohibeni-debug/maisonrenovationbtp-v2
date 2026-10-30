@@ -10,7 +10,7 @@
   function $$(s, r) { return Array.prototype.slice.call((r || doc).querySelectorAll(s)); }
   function fmt(v) {
     v = Math.round(v / 50) * 50;
-    return v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " €";
+    return v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "\u00a0") + " €";
   }
 
   // Menu mobile
@@ -44,18 +44,34 @@
     if (header && header.classList.contains("open")) { setMenu(false); toggle.focus(); }
   });
 
-  // Barre d'appel mobile
+  // Barre d'appel mobile et en-tête plein au défilement
   var callbar = $("[data-callbar]");
-  if (callbar) {
-    var tick = false;
-    window.addEventListener("scroll", function () {
-      if (tick) return;
-      tick = true;
-      window.requestAnimationFrame(function () {
-        callbar.classList.toggle("show", (window.scrollY || window.pageYOffset) > 420);
-        tick = false;
-      });
-    }, { passive: true });
+  var home = doc.body.classList.contains("p-home");
+  var tick = false;
+  function onScroll() {
+    if (tick) return;
+    tick = true;
+    window.requestAnimationFrame(function () {
+      var y = window.scrollY || window.pageYOffset;
+      if (callbar) callbar.classList.toggle("show", y > 420);
+      if (home && header) header.classList.toggle("solid", y > 60);
+      tick = false;
+    });
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  // Vidéo de fond : chargée seulement si l'utilisateur accepte les animations et n'économise pas ses données
+  var vid = $("[data-hero-video]");
+  if (vid) {
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var save = navigator.connection && navigator.connection.saveData;
+    if (!reduce && !save) {
+      $$("source[data-src]", vid).forEach(function (s) { s.src = s.getAttribute("data-src"); });
+      vid.load();
+      var p = vid.play();
+      if (p && p.catch) p.catch(function () {});
+    }
   }
 
   // Diagnostic de façade (onglets)
@@ -166,7 +182,7 @@
       if (!ok && !first) first = f;
     });
     if (first) {
-      show("err", [el("p", {}, "Complétez les champs signalés : nom, téléphone, commune, travaux, description du projet et accord.")]);
+      show("err", [el("p", {}, "Complétez les champs signalés en rouge.")]);
       first.focus();
       return;
     }
@@ -174,7 +190,7 @@
     var d = {
       nom: form.elements.nom.value.trim(),
       telephone: form.elements.telephone.value.trim(),
-      email: form.elements.email.value.trim(),
+      email: form.elements.email ? form.elements.email.value.trim() : "",
       commune: form.elements.commune.value.trim(),
       type: form.elements.type.value,
       message: form.elements.message.value.trim(),
