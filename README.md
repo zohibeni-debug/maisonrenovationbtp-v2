@@ -98,11 +98,11 @@ Lancez ensuite `site/photos.py` puis `site/build.py`. Les photos sont alors conv
 
 ## Vidéo de l'accueil
 
-La vidéo actuelle est une animation générée (`tools/video_hero.py`) : un mur ravalé au rouleau derrière un échafaudage, en boucle. Pour la remplacer par une vraie vidéo de chantier :
+La vidéo actuelle vient du client (`site/video-src/hero-chantier-source.mp4`). Elle est jouée à l'endroit puis à l'envers, pour une boucle de 10 secondes sans coupure. Pour la remplacer :
 
 ```bash
-ffmpeg -i chantier.mp4 -t 12 -vf "scale=1280:-2" -an -c:v libx264 -preset veryfast -crf 27 -pix_fmt yuv420p -movflags +faststart site/video/hero.mp4
-ffmpeg -i chantier.mp4 -t 12 -vf "scale=1280:-2" -an -c:v libvpx-vp9 -b:v 0 -crf 40 site/video/hero.webm
+ffmpeg -i chantier.mp4 -filter_complex "[0:v]scale=1280:-2,split[a][b];[b]reverse[r];[a][r]concat=n=2:v=1:a=0,format=yuv420p[v]" -map "[v]" -an -c:v libx264 -preset veryfast -crf 26 -movflags +faststart site/video/hero.mp4
+ffmpeg -i site/video/hero.mp4 -an -c:v libvpx-vp9 -b:v 0 -crf 36 site/video/hero.webm
 ffmpeg -i site/video/hero.mp4 -frames:v 1 -q:v 4 site/video/hero-poster.jpg
 ```
 

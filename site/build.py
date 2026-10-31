@@ -633,15 +633,17 @@ def build_home():
     tick = "".join(f"<li>{esc(t)}</li>" for t in TICKER)
     video = ""
     head_extra = ""
-    if has_photo("hero-chantier"):
+    poster = "/assets/video/hero-poster.jpg"
+    if os.path.exists(os.path.join(SITE, "video", "hero.mp4")):
+        video = (f'<video class="hero-vid" muted loop playsinline preload="none" poster="{poster}" data-hero-video aria-hidden="true">'
+                 '<source data-src="/assets/video/hero.mp4" type="video/mp4"><source data-src="/assets/video/hero.webm" type="video/webm"></video>')
+        head_extra = f'\n<link rel="preload" href="{poster}" as="image" fetchpriority="high">'
+    elif has_photo("hero-chantier"):
         m = PHOTOS["hero-chantier"]
         ss = ", ".join(f"/assets/img/hero-chantier-{w}.webp {w}w" for w in m["sizes"])
         video = (f'<img class="hero-img" src="/assets/img/hero-chantier-{m["sizes"][1]}.webp" srcset="{ss}" sizes="100vw" '
                  f'width="{m["w"]}" height="{m["h"]}" alt="" fetchpriority="high" decoding="async">')
         head_extra = f'\n<link rel="preload" as="image" imagesrcset="{ss}" imagesizes="100vw" fetchpriority="high">'
-    elif os.path.exists(os.path.join(SITE, "video", "hero.mp4")):
-        video = ('<video class="hero-vid" muted loop playsinline preload="none" poster="/assets/video/hero-poster.jpg" data-hero-video>'
-                 '<source data-src="/assets/video/hero.webm" type="video/webm"><source data-src="/assets/video/hero.mp4" type="video/mp4"></video>')
     body = f"""
 <section class="hero-video" aria-labelledby="hero-t">
 <div class="hero-media" aria-hidden="true">{video}</div>
@@ -1058,7 +1060,7 @@ def copy_assets():
     write("/assets/logo.svg", LG.svg("stacked", "color"))
     write("/favicon.svg", LG.favicon())
     vid = os.path.join(SITE, "video")
-    if os.path.isdir(vid) and not has_photo("hero-chantier"):
+    if os.path.isdir(vid):
         for f in os.listdir(vid):
             write(f"/assets/video/{f}", open(os.path.join(vid, f), "rb").read(), binary=True)
     img_src = os.path.join(SITE, "img-out")
