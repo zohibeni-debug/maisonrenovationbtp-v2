@@ -300,6 +300,7 @@ def header(current):
         {link('prix-ravalement-facade', 'Prix')}
         {link('conseils', 'Conseils')}
         {link('zones-intervention', 'Zones')}
+        {link('qui-sommes-nous', 'Qui sommes-nous')}
         {link('contact', 'Contact')}
       </ul>
       <div class="nav-foot">{tel_btn('btn btn-primary', B['phone'])}<a class="btn btn-ghost" href="tel:{B['phone2_e164']}">{ICONS['tel']}<span>{B['phone2']}</span></a></div>
@@ -328,7 +329,7 @@ def footer(cls=""):
       </address>
     </div>
     <nav class="ft-nav" aria-label="Façade"><h2>Façade</h2><ul>{fac}</ul></nav>
-    <nav class="ft-nav" aria-label="Toiture et conseils"><h2>Toiture</h2><ul>{toi}</ul><h2>Conseils</h2><ul>{gui}<li><a href="/conseils/">Tous les conseils</a></li></ul></nav>
+    <nav class="ft-nav" aria-label="Toiture et conseils"><h2>Toiture</h2><ul>{toi}</ul><h2>Conseils</h2><ul>{gui}<li><a href="/conseils/">Tous les conseils</a></li></ul><h2>Entreprise</h2><ul><li><a href="/qui-sommes-nous/">Qui sommes-nous</a></li><li><a href="/contact/">Contact</a></li></ul></nav>
     <nav class="ft-nav" aria-label="Zones d'intervention"><h2>Zones</h2><ul>{zon}<li><a href="/zones-intervention/">Toutes les communes</a></li></ul></nav>
   </div>
   <div class="wrap ft-legal">
@@ -709,6 +710,7 @@ def build_home():
 <div><dt>7 j/7</dt><dd><strong>Joignables</strong>au {B['phone']}, y compris pour une urgence toiture</dd></div>
 </dl>
 <div class="brands"><p>Nous travaillons avec les produits de</p><ul>{brands}</ul></div>
+<p style="margin-top:1.6rem"><a class="more" href="/qui-sommes-nous/">Qui sommes-nous</a></p>
 </div>
 </section>
 
@@ -962,6 +964,88 @@ def build_commune(c):
     page(path, title, desc, body, crumbs=[("Zones d'intervention", "/zones-intervention/"), (name, path)], schema=sch, priority="0.7", cls="p-commune")
 
 
+ABOUT_FAQ = [
+    ("Où êtes-vous installés ?",
+     "Au 13 rue Paul Vaillant Couturier, à Mitry-Mory (77290). Nous intervenons dans un rayon de 50 km : Seine-et-Marne, Seine-Saint-Denis, Val-d'Oise, bords de Marne du Val-de-Marne et sud de l'Oise."),
+    ("Faites-vous aussi la toiture ?",
+     "Oui, c'est notre seconde activité : couverture, démoussage, zinguerie et gouttières. Pour un projet de toiture seule, vous pouvez aussi consulter notre site de couvreur, artisandruart.fr."),
+    ("Êtes-vous assurés ?",
+     "Oui, en responsabilité civile professionnelle et en garantie décennale. L'attestation d'assurance décennale est jointe à chaque devis."),
+    ("Comment vous joindre ?",
+     "Par téléphone au 06 20 14 69 91 ou au 06 51 28 34 89, 7 jours sur 7, par email à maison.renovationbtp@gmail.com, ou avec le formulaire de devis du site."),
+]
+
+
+def build_about():
+    path = "/qui-sommes-nous/"
+    A = C.A_CONFIRMER
+    if has_photo("hero-chantier"):
+        photo = f'<figure class="visual about-photo">{img("hero-chantier", PHOTOS["hero-chantier"]["alt"], "(min-width: 960px) 45vw, 100vw", eager=True, pos="30% 40%")}<figcaption>Sur un chantier de ravalement : menuiseries, descentes et appareillages protégés avant les travaux.</figcaption></figure>'
+    else:
+        photo = visual(None, "salissures", "ab", "Façade avant ravalement", eager=True)
+    gerant = f"<p>L'entreprise est dirigée par {esc(A['dirigeant'])}.</p>" if A["dirigeant"] else ""
+    brands = "".join(f"<li>{esc(b)}</li>" for b in C.BRANDS)
+    body = f"""
+<section class="ph">
+<div class="wrap ph-grid">
+<div class="ph-txt">
+<h1>Qui sommes-nous ?</h1>
+<p class="lead">Artisan Druart, c'est une entreprise de façade et de couverture installée à Mitry-Mory, en Seine-et-Marne. Nous remettons en état les façades et les toitures des maisons du nord-est francilien, dans un rayon de 50 km.</p>
+<div class="cta-row">{tel_btn()}{devis_btn()}</div>
+<dl class="facts">
+<div><dt>Siège</dt><dd>Mitry-Mory (77290)</dd></div>
+<div><dt>Activités</dt><dd>Façade et toiture</dd></div>
+<div><dt>Zone</dt><dd>50 km, 73 communes</dd></div>
+<div><dt>Avis Google</dt><dd>{B['google_rating']}/5, {B['google_count']} avis</dd></div>
+</dl>
+</div>
+{photo}
+</div>
+</section>
+<div class="wrap body-grid">
+<article class="art">
+<section class="art-sec" aria-labelledby="qui"><h2 id="qui">Une entreprise artisanale de Mitry-Mory</h2>
+<p>Nous sommes installés au {esc(B['street'])}, à Mitry-Mory. C'est de là que nous partons chaque matin vers les chantiers de la Goële, de la Plaine de France, de l'est de la Seine-Saint-Denis, de la vallée de la Marne, de l'est du Val-d'Oise et du sud de l'Oise.</p>
+<p>Notre métier principal, c'est la façade : nettoyage, enduit, peinture, traitement des fissures, meulière, isolation par l'extérieur et bardage. La couverture est notre seconde activité, et les deux se complètent. Quand l'échafaudage est monté pour la façade, nous en profitons pour vérifier la toiture et reprendre les gouttières.</p>
+{gerant}
+<p>Le site <a href="/">maisonrenovationbtp.fr</a> est consacré à la façade. Pour la toiture seule, retrouvez-nous sur <a href="{B['sister_url']}" rel="noopener">artisandruart.fr</a>.</p></section>
+<section class="art-sec" aria-labelledby="facon"><h2 id="facon">Notre façon de travailler</h2>
+<ol class="steps steps-about">
+<li><h3>Diagnostiquer avant de proposer</h3><p>Nous sondons l'enduit, mesurons les fissures et regardons de quoi le mur est fait. C'est le support qui décide du traitement : de la chaux sur la meulière, jamais de ciment ni de peinture fermée.</p></li>
+<li><h3>Chiffrer poste par poste</h3><p>Échafaudage, préparation, traitement, finition : chaque ligne du devis est détaillée, avec les produits et les surfaces. Vous recevez le devis sous 48 heures après la visite.</p></li>
+<li><h3>Protéger la maison</h3><p>Menuiseries, descentes, appareillages, sols et plantations sont protégés avant le premier coup d'outil, comme sur la photo de cette page.</p></li>
+<li><h3>Rester joignables</h3><p>Un interlocuteur, deux numéros, 7 jours sur 7. Et à la fin du chantier, nous faisons ensemble le tour de la façade avant la facture.</p></li>
+</ol></section>
+<section class="art-sec" aria-labelledby="garanties"><h2 id="garanties">Nos garanties</h2>
+<ul>
+<li><strong>Garantie décennale</strong> et responsabilité civile professionnelle. L'attestation est jointe à chaque devis.</li>
+<li><strong>Visite et devis gratuits</strong>, sans engagement.</li>
+<li><strong>Des clients satisfaits</strong> : une note de {B['google_rating']}/5 sur Google ({B['google_count']} avis) et de {B['mappy_rating']} sur Mappy.</li>
+<li><strong>Les démarches préparées avec vous</strong> : pièces techniques de la déclaration préalable et demande d'occupation du trottoir si l'échafaudage le nécessite.</li>
+</ul></section>
+<section class="art-sec" aria-labelledby="produits"><h2 id="produits">Les produits que nous utilisons</h2>
+<p>Nous travaillons avec des fabricants reconnus d'enduits, de peintures et de systèmes d'isolation, et nous suivons leurs règles de pose : temps de séchage, conditions météo et épaisseurs.</p>
+<div class="brands brands-art"><ul class="brand-list">{brands}</ul></div></section>
+<section class="art-sec" aria-labelledby="metiers"><h2 id="metiers">Nos métiers</h2>
+{devis_list([s['slug'] for s in SV.FACADE])}
+<p class="small" style="margin-top:1rem">Et en toiture : <a href="/couverture-toiture/">couverture</a>, <a href="/demoussage-toiture/">démoussage</a>, <a href="/zinguerie-gouttieres/">zinguerie et gouttières</a>.</p></section>
+<section class="art-sec" aria-labelledby="ou"><h2 id="ou">Où nous intervenons</h2>
+<p>Dans 73 communes à moins de 50 km de Mitry-Mory, de Compans à Coulommiers.</p>
+<div class="zones-map">{art.zone_map(cls="map", links=True, title="Carte des communes où nous intervenons autour de Mitry-Mory")}</div>
+<p><a class="more" href="/zones-intervention/">Toutes les zones d'intervention</a></p></section>
+</article>
+<div class="aside-col">{aside_card(head="Parlons de votre façade")}</div>
+</div>
+{faq_html(ABOUT_FAQ)}
+{form_section()}
+"""
+    sch = [{"@context": "https://schema.org", "@type": "AboutPage", "url": URL + path, "name": "Qui sommes-nous ? Artisan Druart",
+            "about": {"@id": ORG_ID}, "inLanguage": "fr-FR"}, faq_schema(ABOUT_FAQ)]
+    page(path, "Qui sommes-nous ? Artisan Druart, façadier à Mitry-Mory",
+         "Artisan Druart, entreprise de façade et de couverture à Mitry-Mory (77) : notre façon de travailler, nos garanties, nos produits et notre zone d'intervention.",
+         body, crumbs=[("Qui sommes-nous", path)], schema=sch, current="qui-sommes-nous", priority="0.7", cls="p-about")
+
+
 def build_contact():
     maps = "https://www.google.com/maps/search/?api=1&query=" + "Artisan+Druart+Maison+Renovation+13+rue+Paul+Vaillant+Couturier+77290+Mitry-Mory"
     body = f"""
@@ -1127,7 +1211,7 @@ https://:version.:project.:subdomain.workers.dev/*
     ll += ["", "## Guides"] + [f"- [{g['name']}]({URL}/{g['slug']}/): {g['desc']}" for g in G.GUIDES]
     ll += ["", "## Zones d'intervention", f"- [Toutes les communes]({URL}/zones-intervention/)"]
     ll += [f"- [Ravalement de façade {CM.a_(c['name'])}]({URL}/ravalement-facade-{c['slug']}/) ({c['dist_site']} km)" for c in sorted(CM.COMMUNES, key=lambda c: c["dist"])]
-    ll += ["", "## Contact", f"- [Contact et devis]({URL}/contact/)"]
+    ll += ["", "## Entreprise", f"- [Qui sommes-nous]({URL}/qui-sommes-nous/)", f"- [Contact et devis]({URL}/contact/)"]
     write("/llms.txt", "\n".join(ll) + "\n")
 
 
@@ -1142,6 +1226,7 @@ def main():
     build_zones()
     for c in CM.COMMUNES:
         build_commune(c)
+    build_about()
     build_contact()
     build_legal()
     build_404()

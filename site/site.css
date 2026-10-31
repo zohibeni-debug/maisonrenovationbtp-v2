@@ -568,3 +568,12 @@ html:not(.js) .sw-list { display: none; }
 .js .diag-panels { display: grid; }
 .js .diag-panels .dp { grid-area: 1 / 1; }
 .js .diag-panels .dp[hidden] { display: block; visibility: hidden; }
+
+/* Qui sommes-nous */
+.about-photo figcaption { font-size: .85rem; color: var(--gris); padding: .7rem .2rem 0; background: #fff; }
+.about-photo { background: transparent; }
+.about-photo img { border-radius: 22px; }
+.steps-about { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+.brands-art { border-top: 0; padding-top: 0; }
+.art .zones-map { margin: 1rem 0 1.2rem; overflow: hidden; }
+@media (min-width: 1100px) and (max-width: 1280px) { .nav-list > li > a, .sub > summary { padding: .5rem .55rem; font-size: .94rem; } .hd-in { gap: 1rem; } }

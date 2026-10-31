@@ -9,7 +9,7 @@ PUB = os.path.join(ROOT, "public")
 OLD = ["/", "/ravalement-facade/", "/enduit-facade/", "/peinture-facade/", "/nettoyage-facade/", "/traitement-fissures-facade/",
        "/impermeabilisation-facade/", "/ravalement-meuliere/", "/isolation-thermique-exterieure/", "/bardage/", "/couverture-toiture/",
        "/demoussage-toiture/", "/zinguerie-gouttieres/", "/prix-ravalement-facade/", "/conseils/", "/zones-intervention/", "/contact/",
-       "/mentions-legales/", "/ravalement-facade-declaration-prealable/", "/choisir-couleur-facade/"]
+       "/mentions-legales/", "/qui-sommes-nous/", "/ravalement-facade-declaration-prealable/", "/choisir-couleur-facade/"]
 OLD += ["/ravalement-facade-%s/" % s for s in """villeparisis claye-souilly compans dammartin-en-goele othis saint-mard juilly moussy-le-neuf le-pin villevaude annet-sur-marne le-mesnil-amelot tremblay-en-france villepinte sevran aulnay-sous-bois livry-gargan vaujours coubron clichy-sous-bois montfermeil les-pavillons-sous-bois le-raincy villemomble gagny le-blanc-mesnil bondy neuilly-sur-marne noisy-le-grand rosny-sous-bois drancy chelles courtry brou-sur-chantereine vaires-sur-marne thorigny-sur-marne pomponne lagny-sur-marne torcy champs-sur-marne noisiel bussy-saint-georges montevrain serris magny-le-hongre meaux trilport esbly coulommiers la-ferte-sous-jouarre pontault-combault roissy-en-brie ozoir-la-ferriere tournan-en-brie gonesse goussainville louvres fosses arnouville garges-les-gonesse sarcelles villiers-le-bel roissy-en-france senlis chantilly crepy-en-valois nanteuil-le-haudouin le-perreux-sur-marne nogent-sur-marne bry-sur-marne champigny-sur-marne villiers-sur-marne fontenay-sous-bois""".split()]
 
 class P(HTMLParser):
