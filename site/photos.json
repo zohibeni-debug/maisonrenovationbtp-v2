@@ -58,5 +58,15 @@
    1161
   ],
   "alt": "Façade enduite avec coulures noires sous l'appui de fenêtre et algues vertes en pied de mur"
+ },
+ "hero-chantier": {
+  "w": 1672,
+  "h": 941,
+  "sizes": [
+   768,
+   1280,
+   1672
+  ],
+  "alt": "Façadier d'Artisan Druart sur un chantier de ravalement, menuiseries et descentes protégées"
  }
 }

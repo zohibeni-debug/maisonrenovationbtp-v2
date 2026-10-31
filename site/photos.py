@@ -23,6 +23,7 @@ SRC = os.path.join(HERE, "photos-src")
 OUT = os.path.join(HERE, "img-out")
 LEGACY = os.path.join(HERE, "legacy-out")
 WIDTHS = [480, 960, 1440]
+WIDTHS_HERO = [768, 1280, 1672]
 
 # Textes alternatifs (repris de l'ancien site et précisés)
 ALTS = {
@@ -42,6 +43,7 @@ ALTS = {
     "couverture-apres": "Toiture après réfection : tuiles neuves sur le versant",
     "carte-demoussage": "Démoussage d'une toiture en tuiles",
     "carte-zinguerie": "Pose d'une gouttière et d'une descente en acier laqué",
+    "hero-chantier": "Façadier d'Artisan Druart sur un chantier de ravalement, menuiseries et descentes protégées",
     # photos du diagnostic de façade (accueil)
     "diag-salissures": "Façade enduite avec coulures noires sous l'appui de fenêtre et algues vertes en pied de mur",
     "diag-faiencage": "Enduit de façade faïencé : réseau de fines craquelures près d'une fenêtre",
@@ -98,7 +100,8 @@ def main():
         else:
             im = im.convert("RGB")
             W = im.size[0]
-            widths = [w for w in WIDTHS if w < W] + [min(W, WIDTHS[-1])]
+            ws = WIDTHS_HERO if k.startswith("hero") else WIDTHS
+            widths = [w for w in ws if w < W] + [min(W, ws[-1])]
         for w in widths:
             h = round(im.size[1] * w / im.size[0])
             im.resize((w, h), Image.LANCZOS).save(os.path.join(OUT, f"{k}-{w}.webp"), "WEBP", quality=80, method=6)

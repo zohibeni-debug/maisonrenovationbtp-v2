@@ -632,7 +632,14 @@ def build_home():
     brands = "".join(f"<li>{esc(b)}</li>" for b in C.BRANDS)
     tick = "".join(f"<li>{esc(t)}</li>" for t in TICKER)
     video = ""
-    if os.path.exists(os.path.join(SITE, "video", "hero.mp4")):
+    head_extra = ""
+    if has_photo("hero-chantier"):
+        m = PHOTOS["hero-chantier"]
+        ss = ", ".join(f"/assets/img/hero-chantier-{w}.webp {w}w" for w in m["sizes"])
+        video = (f'<img class="hero-img" src="/assets/img/hero-chantier-{m["sizes"][1]}.webp" srcset="{ss}" sizes="100vw" '
+                 f'width="{m["w"]}" height="{m["h"]}" alt="" fetchpriority="high" decoding="async">')
+        head_extra = f'\n<link rel="preload" as="image" imagesrcset="{ss}" imagesizes="100vw" fetchpriority="high">'
+    elif os.path.exists(os.path.join(SITE, "video", "hero.mp4")):
         video = ('<video class="hero-vid" muted loop playsinline preload="none" poster="/assets/video/hero-poster.jpg" data-hero-video>'
                  '<source data-src="/assets/video/hero.webm" type="video/webm"><source data-src="/assets/video/hero.mp4" type="video/mp4"></video>')
     body = f"""
@@ -723,7 +730,7 @@ def build_home():
     page("/", "Ravalement de façade Mitry-Mory (77) | Artisan Druart",
          "Ravalement de façade à Mitry-Mory et 50 km autour : nettoyage, enduit, peinture, fissures, meulière, isolation par l'extérieur, toiture. Devis gratuit sous 48 h.",
          body, schema=[faq_schema(C.HOME_FAQ)], priority="1.0", cls="p-home",
-         extra_head='\n<link rel="preload" href="/assets/video/hero-poster.jpg" as="image">')
+         extra_head=head_extra)
 
 
 def build_service(s):
@@ -1051,7 +1058,7 @@ def copy_assets():
     write("/assets/logo.svg", LG.svg("stacked", "color"))
     write("/favicon.svg", LG.favicon())
     vid = os.path.join(SITE, "video")
-    if os.path.isdir(vid):
+    if os.path.isdir(vid) and not has_photo("hero-chantier"):
         for f in os.listdir(vid):
             write(f"/assets/video/{f}", open(os.path.join(vid, f), "rb").read(), binary=True)
     img_src = os.path.join(SITE, "img-out")
